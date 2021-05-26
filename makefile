@@ -3,7 +3,7 @@
 all: diss.pdf
 
 diss.pdf: diss.tex
-	 latexmk -pdf -shell-escape -file-line-error -f diss.tex
+	 latexmk -pdf -file-line-error -f diss.tex -no-shell-escape
 
 clean:
 	latexmk -c
