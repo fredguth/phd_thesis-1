@@ -2,12 +2,7 @@
 \chapter{Probability Theory}\label{ch:probability}
 
 %************************************************
-\begin{quotation}
-	\small \emph{ \flushright A wise man proportions his belief to the evidence.\\
-	\flushright --- David Hume\\
-	\vspace{1cm} }
-\end{quotation}
-
+\openepigraph{A wise man proportions his belief to the evidence.}{David Hume}
 In this chapter, propositional calculus and probability theory are derived from a list of desired characteristics for sceptical agents.
 
 \section{From Language to Probability}\label{sec:language_probability}
@@ -66,7 +61,7 @@ A realm of discourse to talk about reality needs at least the empiricist perspec
 (authors have called these agents epistemic agents~\cite{caticha:2008}, idealised epistemic agents~\cite{sowinski:2016} or robots~\cite{jaynes:2003}), beliefs are not independent of each other~\cite{caticha:2008}, they form an interconnected web that is the agent's knowledge base. The update mechanism, its inference method, follows the principle of minimality, i.e.\ it tries to minimise the change in the knowledge base.
 
 \paragraph{Desiderata for a sceptical language} As we did for rational agents, let us state a set of desired characteristics for the language of Science, \(\lang_S= <\Sigma_S, \Phi_S>\)
-% \footnote{~\cite{sowinski:2016,caticha:2008, jaynes:2003} also present this same idea of deriving probability theory from a desiderata.}:
+\footnote{~\citeonly{sowinski:2016,caticha:2008, jaynes:2003} also present this same idea of deriving probability theory from a desiderata.}:
 \begin{enumerate}[I.]
 	\item \textbf{Knowledge is a set of beliefs, quantifiable by real numbers and dependent on prior evidence:~\cite{sowinski:2016,caticha:2008, jaynes:2003}}\footnote{Moacir: is this yours formulation?} \\
 	Let \(S_i \in \Sigma_S\) be sentences about the world. Given any two statements \(S_1\), \(S_2\), the agent must be able to say that \(S_1\) is more plausible than \(S_2\), or that \(S_2\) is more plausible than \(S_1\), or that \(S_1\) and \(S_2\) are equally plausible~\cite{caticha:2008}. Thus we can list statements in an increasing plausibility order. Real numbers can represent this transitive ordering~\cite{caticha:2008}.\footnote{We are implicitly assuming that the language we are building has infinite statements. A further discussion on this continuity assumption can be found in~\cite[p. 26]{sowinski:2016}}.
@@ -341,8 +336,7 @@ Several works on Probability Theory choose to start by defining random variables
 
 This usual approach is, nevertheless, confusing. Beyond the fact that random variables are not variables, but functions; nor random, they model uncertain \emph{events}; it is hard to grasp what random variables are without understanding their reasons for being.
 
-% The difference between a random variable 𝑋 and a ``realization'' of it is the difference between a distribution and a sample from that distribution. In particular, a random variable 𝑋 is ``formalized'' in terms of a function from the sample space to some result space, typically 𝐑. The realization of a random variable is ``what you get'' when an \emph{experiment} is run, and you figure out which \emph{events} happened, and you apply 𝑋 to those \emph{events}.
-%
+The difference between a random variable $\rvX$ and a ``realization'' of it is the difference between a distribution and a sample from that distribution. In particular, a random variable $\rvX$ is ``formalized'' in terms of a function from the sample space to some result space, typically $\Real$. The realization of a random variable is ``what you get'' when an \emph{experiment} is run, and you figure out which \emph{events} happened, and you apply $\rvX$ to those \emph{events}.
 
 \subsection{Notation hell} If a \emph{random variable} is a function, how can we write \(P(\rvX=4)\) or \(P(\rvX > 7)\)? The reason for such confusion is due to some notation abuse that became standard in works on probability theory. It is not easy to grasp it in the beginning, but the explanation was already stated at~\eqref{eq:P(X=x)}. \(P(\rvX=\rx)\) is a shorthand for \(P(\rvX^{-1}(\rx))\).
 
