@@ -529,3 +529,13 @@
   \end{figure}
 }
 
+\newcommand{\widefigure}[3]{
+  \begin{fullwidth}
+    \begin{figure}[hbt!]
+      \centering
+      \includegraphics[width=#2\textwidth]{#1}
+      \caption[#3]{#3}\label{fig:#1}
+  \end{figure}
+  \end{fullwidth}
+
+}

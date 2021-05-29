@@ -2,11 +2,8 @@
 \chapter{Information Theory}\label{ch:information}
 
 %************************************************
-\begin{quotation}
-	\small \emph{ \flushright Only through communication can human life hold meaning.\\
-	\flushright --- Paulo Freire\\
-	\vspace{1cm} }
-\end{quotation}
+\openepigraph{Only through communication can human life hold meaning.}{Paulo Freire}
+
 This chapter derives Shannon Information from Probability Theory, explicates some implicit assumptions in the usage of Shannon Information, and explains basic Information Theory concepts.
 
 
@@ -25,10 +22,10 @@ Let us say that an agent's \emph{prior} belief in a statement \(S\) is \(P(S) \)
 
 We shall call this ratio by which prior and posterior are related as likelihood (\(\LH\)):
 
-% % This update procedure can be generalised to a set of experiences. Consider a sequence of experiences: \(E = \{\re_t\}_0^T\)
-% % \[p(S|\re_0) \to p(S|\re_0 \land \re_1) \to \cdots \to p(S|\re_0 \land \re_1 \land \cdots \land \re_T)
-% %   \]
-% % But according to the Cox axiom~\ref{consistency}~\ref{axiom:order}, an agent may partition her experiences in any way she chooses, and this does not affect her final belief~\cite{sowinski:2016}. Therefore\footnote{We have already ( section~\ref {sec:skeptical_agents}) delved a little on the implications of the indifference to the order of evidence which is also an indifference in sequential versus simultaneous updating.}:
+This update procedure can be generalised to a set of experiences. Consider a sequence of experiences: \(E = \{\re_t\}_0^T\)
+\[p(S|\re_0) \to p(S|\re_0 \land \re_1) \to \cdots \to p(S|\re_0 \land \re_1 \land \cdots \land \re_T)
+  \]
+But according to the Cox axiom~\ref{consistency}~\ref{axiom:order}, an agent may partition her experiences in any way she chooses, and this does not affect her final belief~\cite{sowinski:2016}. Therefore\footnote{We have already (~\cref {sec:skeptical_agents}) delved a little on the implications of the indifference to the order of evidence which is also an indifference in sequential versus simultaneous updating.}:
 \begin{align}
 	\LH(\re; S) &= \frac{\text{Posterior}}{\text{Prior}} = \frac{P(S | \re )}{P(S)} = \frac{P(\re | S )}{P(\re)} \label{eq:likelihood}\\
 	P(S|\re ) &= \LH(\re; S)\cdot P(S).
@@ -77,7 +74,7 @@ Delightfully, our definition of \emph{hidden information} that reduces the uncer
 \begin{align}
 	h (S) = - \log P(S)
 \end{align}
-is equivalent to Shannon's self information\footnote{Also known as the Shannon information content of an outcome~\cite{mackay:2002}.}:
+is equivalent to Shannon's self information\footnote{Also known as the Shannon information content of an outcome~\citeonly{mackay:2002}.}:
 \begin{align}
 	I[\src] = - \log p(\rs)
 \end{align}
@@ -114,7 +111,7 @@ There is nothing by construction that forces \acsp{DNN} to be consistent. Recent
 \section{Shannon's Mathematical Theory of Communication}
 
 % \subsection{A \emph{bit} of fiction}
-\acf{IT} has an identifiable beginning: Shannon's 1948 paper~\citeauthoritle*{shannon:1948} was a giant leap towards understanding communication and defining \emph{information}\footnote{In a rare piece of collaboration, Shannon asked his lunchroom table colleagues at Bell Labs to come up with a snapier name than \emph{binary digit}. \emph{Bigit} was considered, but John Tukey's proposal, \emph{bit}, was chosen~\cite{soni:2017}.}. Despite his acknowledging of the influence from previous works by pioneers such Harry Nyquist and Ralph Hartley, it was Shannon's unifying vision that revolutionized communication and provided a \emph{``blueprint'} for the information age~\cite{aftab:2001}. His theory defines unbreachable limits, the \emph{``laws of information''}~\cite{stone:2015}:
+\acf{IT} has an identifiable beginning: Shannon's 1948 paper~\citetitle*{shannon:1948} was a giant leap towards understanding communication and defining \emph{information}\footnote{In a rare piece of collaboration, Shannon asked his lunchroom table colleagues at Bell Labs to come up with a snapier name than \emph{binary digit}. \emph{Bigit} was considered, but John Tukey's proposal, \emph{bit}, was chosen~\citeonly{soni:2017}.}. Despite his acknowledging of the influence from previous works by pioneers such Harry Nyquist and Ralph Hartley, it was Shannon's unifying vision that revolutionized communication and provided a \emph{blueprint} for the information age~\cite{aftab:2001}. His theory defines unbreachable limits, the \emph{laws of information}~\cite{stone:2015}:
 
 	\begin{enumerate}[i.]\label{shannon_laws}
 		\item There is an upper limit, the \textbf{channel capacity}, to the amount of information that can be communicated through the channel;
@@ -129,7 +126,7 @@ The idea that it is possible to transmit information with zero error through a n
 Shannon deliberately chose not to deal with fuzzy concepts as intelligence or meaning:
 \begin{quotation}
 	\small \emph{ \textbf{The fundamental problem of communication is that of reproducing at one point either exactly or approximately a message selected at another point.} Frequently, the messages have meaning; that is, they refer to or are correlated according to some system with certain physical or conceptual entities. These \textbf{semantic aspects of communication are irrelevant to the engineering problem}. The significant aspect is that the actual message is one \textbf{selected from a set} of possible messages.\\
-	\flushright --- Claude Shannon,~\citeauthoritle*[p.1]{shannon:1948}\index{Claude Shannon}\\}
+	\flushright --- Claude Shannon,~\citetitle*[p.1]{shannon:1948}\index{Claude Shannon}\\}
 	\vspace{1cm}
 \end{quotation}
 
@@ -167,12 +164,8 @@ Therefore, in this setting, \emph{information is a measure of freedom of choice 
 In the aforementioned famous paper, Shannon limited to say that mathematically, if the set of possible messages \(\srcalph\)  is finite, any function of the size of this set \(f(|\srcalph|)\) is a measure of information and that the logarithmic function is a natural choice. We shall expand on this idea.
 
 \subsection{A guessing game}\label{guessing_game} Imagine a number from 1 to 1000. Let us assume that you picked the number at random. Thus, each number in the range had the same chance of being chosen, \(\frac{1}{1000}\). How many questions do I need to ask to guess your number correctly? Well, it depends on what are the allowed answers. I could ask:
-\begin{wrapfigure}
-	{L}{0.5
-	\textwidth} \centering
-	\includegraphics[width=0.45
-	\textwidth]{246}
-	\caption{Branching factor of 10 to find 246.}\label{fig:branching} \end{wrapfigure}
+\sidefigure{branching}{0}{Branching factor of 10 to find 246.}
+
 \begin{itemize}
 	\item How many hundreds do your number have?
 	\item Then, I would ask how many tens do your number have?
@@ -277,24 +270,24 @@ An encoding transforms information into data. The same information can be transf
 
 	\begin{figure}[hbt!]
 		\centering
-		\makebox[\largefigure][r]{
+		\makebox[\textwidth][r]{
 		\centering
 		\begin{subfigure}
-			[b]{.27\largefigure} \centering
+			[b]{.27\textwidth} \centering
 			\includegraphics[width=
 			\textwidth]{cutia-photo}
 			\caption{360 Kb 15\small{cm}x20\small{cm} PNG colored image of a cat.}
 		\end{subfigure}
 		\hspace*{1em}
 		\begin{subfigure}
-			[b]{.27\largefigure} \centering
+			[b]{.27\textwidth} \centering
 			\includegraphics[width=
 			\textwidth]{cutia-gray}
 			\caption{  27 Kb 15\small{cm}x20\small{cm} JPG grayscale image of a cat.}
 	\end{subfigure}
 		\hspace*{1em}
 		\begin{subfigure}
-			[b]{.2733\largefigure} \centering
+			[b]{.2733\textwidth} \centering
 			\includegraphics[width=
 			\textwidth]{cutia-line}
 			\caption{4.9 Kb 15\small{cm}x20\small{cm} SVG duotone image of a cat.}
@@ -303,6 +296,8 @@ An encoding transforms information into data. The same information can be transf
 }
 \caption{Different representations of a cat and their encoding sizes in bits.}
 \end{figure}
+
+
 
 
 
@@ -347,47 +342,45 @@ that ``translates'' the block of source symbols (the message) into a code \(\enc
 		\end{align}
 \end{definition}
 
-% The efficiency of an encoder is its rate, how many useful bits it transforms per souce period (\(T_{\src}\)):
-% \begin{align}
-% 	n \text{symbols} = k \text{bits}\\
-% 	\frac{n}{T_{\src}} \frac{\text{symbols}}{\text{seconds}}= \frac{k}{T_{\src}} \frac{\text{symbols}}{\text{seconds}}
-% \end{align}
+The efficiency of an encoder is its rate, how many useful bits it transforms per souce period (\(T_{\src}\)):
+\begin{align}
+	n \text{symbols} = k \text{bits}\\
+	\frac{n}{T_{\src}} \frac{\text{symbols}}{\text{seconds}}= \frac{k}{T_{\src}} \frac{\text{symbols}}{\text{seconds}}
+\end{align}
 
-% The efficiency of the encoding \(\rvX^{k}\) can be defined by the rate:
-% \begin{align}
-% 	R_{\rvX} = \frac{k}{n} \frac{\text{bits}}{\text{symbol}}
-% \end{align}
-% Shannon's source coding theorem is essentially about data compression~\cite{stone:2015}.
-% The encoding process yields inputs with a specific distribution \(p(\rvX)\). The shape of this distribution determines its entropy \(H[\rvX]\) and therefore how much information each input carries\cite{stone:2015}.
+The efficiency of the encoding \(\rvX^{k}\) can be defined by the rate:
+\begin{align}
+	R_{\rvX} = \frac{k}{n} \frac{\text{bits}}{\text{symbol}}
+\end{align}
+Shannon's source coding theorem is essentially about data compression.
+The encoding process yields inputs with a specific distribution \(p(\rvX)\). The shape of this distribution\footnote{The relationship between information (entropy) and the shape of the distribution is crucial for the \ac{IBT} perspective. } determines its entropy \(H[\rvX]\) and therefore how much information each input carries\cite{stone:2015}.
 
-% We can interpret Shannon's source coding theorem in terms of data compression.  This interpretation was developed independently by Russian mathematician Andrey Kolmogorov(1933). He defined algorithmic complexity to be the length of the shortest computer program capable of describing a given object (e.g a message).  Algorithmic complexity is now known as Kolmogorov complexity\cite{stone:2015}.
+We can interpret Shannon's source coding theorem in terms of data compression.  This interpretation was developed independently by Russian mathematician Andrey Kolmogorov. He defined algorithmic complexity to be the length of the shortest computer program capable of describing a given object (e.g a message).  Algorithmic complexity is now known as Kolmogorov complexity.
 
-% The encoding process yields a specific distribution \(p(\encsymb)\) to the channel input \enc. The distribution determines its entropy \(H[\rvX]\) and therefore how much information each symbol carries~\cite{stone:2015}.
+The encoding process yields a specific distribution \(p(\encsymb)\) to the channel input $\enc$. The distribution determines its entropy \(H[\rvX]\) and therefore how much information each symbol carries~\cite{stone:2015}.
 % \begin{figure}[hbt!] \centering
 % 	\includegraphics[width=
 % 	.65\textwidth]{tubes3}
 % 	\caption{Entropy of the source vs. coding capacity.}\label{fig:tube}
 % \end{figure}
+
+
 \begin{figure}[hbt!]
-	\centering \makebox[
-\largefigure][r]{
+	\centering \makebox[\textwidth][r]{
 	\centering
-	\begin{subfigure}
-		[b]{.4\largefigure}
-		\includegraphics[width=
-		\textwidth, left]{tubes5}
+	\begin{subfigure}[b]{.4\textwidth}
+		\includegraphics[width=\textwidth]{tubes5}
 		\caption{Loss of information.}\label{fig:information_loss}
 	\end{subfigure}
-	\begin{subfigure}
-		[b]{.4\largefigure} \centering
-		\includegraphics[width=
-		\textwidth, left]{tubes6}
-		\caption{ Waste of resources (bits).}\label{fig:resource_waste}
-\end{subfigure}
+	\begin{subfigure}[b]{.4\textwidth} \centering
+		\includegraphics[width=\textwidth]{tubes6}
+		\caption{Waste of resources (bits).}\label{fig:resource_waste}
+	\end{subfigure}
 \hfill
 }
 \caption{Entropy of the source vs. coding capacity.}\label{fig:tube}
 \end{figure}
+
 Shannon proved a relation between the source's entropy and its optimal encoding (this relation will be shown in \cref{sec:source_encoding_theorem}). The source's entropy is a lower bound on the minimum bits/symbol needed to encode it. The intuition is simple, imagine the Entropy of the source as a ``tube ``(see \cref{fig:tube}). The capacity of the tube is the rate of bits/symbol we expect from the source. The encoder is a connection to the tube.
 
 If we use fewer bits than the entropy to encode it, we are losing information (see \cref{fig:information_loss}). If we use more bits than the entropy, we are wasting resources (see \cref{fig:resource_waste}).
@@ -503,7 +496,8 @@ In our example:
 Now that we understand how the source encoding works, let us take a moment to appreciate the geniality of Shannon.  Here, we show how he demonstrated the size of the optimal encoding without ever explaining which encoding is that in the first place.
 
 \begin{theorem}\label{th:source_encoding}
-	The optimal binary enconding \(\enc^{k}=(X_1, \cdots, X_k),~ \enc_i \in \{0,1\}\),  of a n-symbols message \(\srcblk=(\src_1, \cdots, \src_n)\), where \(\src_i \in \srcalph\) are i.i.d.\footnote{An \st{obsessive} observant reader may have noticed that we are here considering the source as an i.i.d. stochastic process, instead of a stationay ergodic process.  This is the same proof stated by Shannon in~\cite{shannon:1948} and in several \ac{IT} books (\eg~\cite{cover:2006,mackay:2002}). A proof for ergodic finite alphabet sources can be found in~\cite{mcmillan:1953}.} \(\sim p(\srcsymb)\) has size \(k \approx n H[\src]\) for large \(n\).
+	The optimal binary enconding \(\enc^{k}=(X_1, \cdots, X_k),~ \enc_i \in \{0,1\}\),  of a n-symbols message \(\srcblk=(\src_1, \cdots, \src_n)\), where \(\src_i \in \srcalph\) are i.i.d.\footnote{An \st{obsessive} observant reader may have noticed that we are here considering the source as an i.i.d. stochastic process, instead of a stationay ergodic process.  This is the same proof stated by Shannon in~\citeonly{shannon:1948} and other references (\citeonly{cover:2006,mackay:2002}). A proof for ergodic finite alphabet sources can be found in~\citeonly{mcmillan:1953}.}
+	\(\sim p(\srcsymb)\) has size \(k \approx n H[\src]\) for large \(n\).
 \end{theorem}
 \begin{proof}
 	A one-to-one mapping \(\srcblk \mapsto \enc^{k}\) is invertible. If we enumerate all elements of \(\srcblk\) in binary, we will need \(k\) bits. Thus, with absolute certainty:
@@ -699,7 +693,7 @@ The mutual information can also be seen as a measure of the mutual dependence be
 We cannot increase information by applying a deterministic function to the data, nor decrease information if the deterministic function is invertible.
 
 \begin{theorem}
-	[DPI\footnote{We refer to~\cite[th.2.8.1]{cover:2006} for a proof}] Let three random variables form the Markov chain \(\rvX \rightarrow \rvY \rightarrow \rvZ\), implying:
+	[DPI] Let three random variables form the Markov chain \(\rvX \rightarrow \rvY \rightarrow \rvZ\), implying:
 	\begin{align}
 		p(\rx,\ry,\rz)=p(\rx)p(\ry|\rx)p(\rz|\ry).
 	\end{align}
@@ -708,6 +702,9 @@ We cannot increase information by applying a deterministic function to the data,
 		I[\rvX;\rvY] \geqslant I[\rvX;\rvZ]
 	\end{align}
 \end{theorem}
+\begin{proof}
+	We refer to~\cite[th.2.8.1]{cover:2006} for a proof.
+\end{proof}
 \begin{theorem}
 	[Reparemetrisation invariance] $I[\rvX;\rvY]\geqslant I[\rvX;g(\rvY)]$: functions of the data $\rvY$ cannot increase the information about $\rvX$.\label{th:reparemetrisation_invariance}
 \end{theorem}
