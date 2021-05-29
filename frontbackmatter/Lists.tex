@@ -1,0 +1,47 @@
+%*******************************************************
+% List of Figures and of the Tables
+%*******************************************************
+\clearpage
+\pagestyle{empty} % Uncomment this line if your lists should not have any headlines with section name and page number
+\begingroup
+    \let\clearpage\relax
+    \let\cleardoublepage\relax
+    %*******************************************************
+    % List of Figures
+    %*******************************************************
+    %\phantomsection
+    %\addcontentsline{toc}{chapter}{\listfigurename}
+    % Teo review removed
+    % \pdfbookmark[1]{\listfigurename}{lof}
+    % \listoffigures
+
+    % \vspace{8ex}
+
+    %*******************************************************
+    % List of Tables
+    %*******************************************************
+    %\phantomsection
+    %\addcontentsline{toc}{chapter}{\listtablename}
+
+    % Teo review removed
+    % \pdfbookmark[1]{\listtablename}{lot}
+    % \listoftables
+
+    % \vspace{8ex}
+    % \newpage
+
+    %*******************************************************
+    % List of Listings
+    %*******************************************************
+    %\phantomsection
+    %\addcontentsline{toc}{chapter}{\lstlistlistingname}
+% Teo review removed
+    % \pdfbookmark[1]{\lstlistlistingname}{lol}
+    % \lstlistoflistings
+
+    \vspace{8ex}
+    \input{FrontBackmatter/Acronyms.tex}
+    \input{FrontBackmatter/Notation.tex}
+
+
+\endgroup
