@@ -4,14 +4,8 @@
 \chapter{The Information Bottleneck Principle}\label{ch:ib}
 
 %************************************************
-% \begin{quotation}
-% 	\small \textit{ \flushright
-% 	Great claims require great evidence.
-% 	\flushright --- Carl Sagan \\
-% 	\vspace{1cm}}
-% \end{quotation}
 
-As we already discussed (see \ref{sec:communication_problem_setting}), Shannon intentionally left out from information theory\footnote{Which Shannon has always referenced as Communication Theory.} issues of meaning or relevance, and focused on the problem of transmitting information.
+As we already discussed (\cref{sec:communication_problem_setting}), Shannon intentionally left out from information theory\footnote{Which Shannon has always referenced as Communication Theory.} issues of meaning or relevance, and focused on the problem of transmitting information.
 
 Contrarily,~\citeauthor{tishby:1999} argue in~\cite{tishby:1999} that lossy source compression provides a natural quantitative approach to the matter of relevance and, therefore, they use Information Theory itself to address relevance.
 
@@ -20,38 +14,38 @@ This chapter will present the Information Bottleneck Principle, the foundation o
 The IB principle approach is related to \acf*{RDT}. Hence, first we will briefly overview RDT as~\citeauthor{tishby:1999} describe it~\cite{tishby:1999,slonim:2002}. Then, we will formally present the IB Principle, its problem setting and solution, and show how it can be seen as a special case of \acl{RDT}.
 
 \section{Rate-Distortion Theory: relevance through a distortion function}\label{sec:RDT}
-We know from \eqref{eq:shannon_1st_law} that for any rate $R \leq I(X;Y)$ there will be a loss in the reconstructed signal. \acf*{RDT} addresses the problem of determining the rate $R$ that should be communicated over a channel so that the source (input signal $\rvX$) can be approximately reconstructed without exceeding an expected distortion.
+We know from \cref{eq:shannon_1st_law} that for any rate $R \leq I(X;Y)$ there will be a loss in the reconstructed signal. \acf*{RDT} addresses the problem of determining the rate $R$ that should be communicated over a channel so that the source (input signal $\rvX$) can be approximately reconstructed without exceeding an expected distortion.
 
 \subsection{The \ac{RDT} problem}
 \subsubsection{Problem setting}
 \begin{enumerate}
-	\item Let the discrete random variable $\rvX$ denote the \bt{source} of vectors randomly drawn from a probability distribution \(p(x)\);
-	\item Each vector \(x\sim p(x)\) is a \bt{message} you want to transmit among a set of possible messages $\aXX,i.e.\  x \in \aXX$ ;
-	\item Let another discrete random variable $\rvZ$ denote\footnote{This compressed representation of $\rvX$ is usually denoted by $\rvZ, \rvT$ or $\hat{\rvX}$ } a compressed \bt{representation} of $\rvX$ ;
-	\item This representation is defined by a \bt{channel}\footnote{A noisy channel and a lossy encoder are equivalents.} $p(z|x)$, a stochastic mapping  between each message $x \in \aXX$ to each code $z \in \aZZ$;
-	\item The \bt{rate} $R$ is the channel capacity, i.e.\ the average number of bits per element $\rx \in \aXX$ needed to specify a compressed element (code) $\rz \in \aZZ$.
-	\item Let $d: \aXX \times \aZZ \to \Real^{+}$ be a function that denote the \bt{distortion measure} between $\rvX$ and its representation $\rvZ$. Examples of distortion measures are the mean square error, $d_{MSE}(x;z)=\langle (x - z)^2 \rangle$ or the Hamming distortion (probability of error) $d_{H}(x,z)=\truth_{[x \neq z]}$.
+	\item Let the discrete random variable $\rvX$ denote the \textbf{source} of vectors randomly drawn from a probability distribution \(p(x)\);
+	\item Each vector \(x\sim p(x)\) is a \textbf{message} you want to transmit among a set of possible messages $\aXX,i.e.\  x \in \aXX$ ;
+	\item Let another discrete random variable $\rvZ$ denote\footnote{This compressed representation of $\rvX$ is usually denoted by $\rvZ, \rvT$ or $\hat{\rvX}$ } a compressed \textbf{representation} of $\rvX$ ;
+	\item This representation is defined by a \textbf{channel}\footnote{A noisy channel and a lossy encoder are equivalents.} $p(z|x)$, a stochastic mapping  between each message $x \in \aXX$ to each code $z \in \aZZ$;
+	\item The \textbf{rate} $R$ is the channel capacity, i.e.\ the average number of bits per element $\rx \in \aXX$ needed to specify a compressed element (code) $\rz \in \aZZ$.
+	\item Let $d: \aXX \times \aZZ \to \Real^{+}$ be a function that denote the \textbf{distortion measure} between $\rvX$ and its representation $\rvZ$. Examples of distortion measures are the mean square error, $d_{MSE}(x;z)=\langle (x - z)^2 \rangle$ or the Hamming distortion (probability of error) $d_{H}(x,z)=\truth_{[x \neq z]}$.
 \end{enumerate}
 \subsubsection{Problem Statement}
-Given the problem setting above, the \ac*{RDT} problem\footnote{ First defined by Shannon~\cite{shannon:1948}.} is to find the minimal number of bits per symbol (rate $R$) that should be communicated over a channel so that the source $\rvX$ can be approximately reconstructed via a representation $\rvZ$ without exceeding an expected distortion $D$, defined by the distortion function $d(x;z)$.
+Given the problem setting above, the \ac*{RDT} problem\footnote{ First defined by Shannon~\citeonly{shannon:1948}.} is to find the minimal number of bits per symbol (rate $R$) that should be communicated over a channel so that the source $\rvX$ can be approximately reconstructed via a representation $\rvZ$ without exceeding an expected distortion $D$, defined by the distortion function $d(x;z)$.
 
 \subsection{Understanding the \ac*{RDT} problem}
-The core of the \ac*{RDT} problem is the need for a good compressed representation of a message. From \eqref{eq:shannon_1st_law}, any rate $I[\rvZ;\rvX] \leq H[\rvX]$ will imply a loss in the reconstructed signal, an expected distortion,  $\langle d(x;z) \rangle$.
+The core of the \ac*{RDT} problem is the need for a good compressed representation of a message. From \cref{eq:shannon_1st_law}, any rate $I[\rvZ;\rvX] \leq H[\rvX]$ will imply a loss in the reconstructed signal, an expected distortion,  $\langle d(x;z) \rangle$.
 
-As we have seen in \ref{noisy_channel_theorem}, low values of $I[\rvZ;\rvX]$, calculated based on the joint distribution $p(x,y)=p(x)p(z|x)$, imply compact representations, i.e.\ $|\aZZ|$ is small. In the extreme, all messages are translated to the same code: $|\aZZ|=1$ and $I[\rvZ;\rvX]=0$. Contrarily, high values of $I[\rvZ;\rvX]$ imply low compression.  In the extreme, $\rvZ$ simply copies $\rvX$: $I[\rvZ;\rvX]=H[\rvX]$ and $|\aZZ|=|\aXX|$.
+As we have seen in \cref{noisy_channel_theorem}, low values of $I[\rvZ;\rvX]$, calculated based on the joint distribution $p(x,y)=p(x)p(z|x)$, imply compact representations, i.e.\ $|\aZZ|$ is small. In the extreme, all messages are translated to the same code: $|\aZZ|=1$ and $I[\rvZ;\rvX]=0$. Contrarily, high values of $I[\rvZ;\rvX]$ imply low compression.  In the extreme, $\rvZ$ simply copies $\rvX$: $I[\rvZ;\rvX]=H[\rvX]$ and $|\aZZ|=|\aXX|$.
 
 If we can compress the input data to any amount of information from $0$ to $H[\rvX]$, what will define the relevance of information is the aditional constraint of the problem: the distortion measure. Given such function, the partitioning of $\rvX$ defined by $p(z|x)$ has the \emph{expected distortion}:
 \begin{align}
 	\langle d[x;z] \rangle _{p(x,z)} = \sum_{x,z} p(x) p(z|x) d[x;z]
 \end{align}
 
-Consequently, we are assuming that the definition of relevance is part of the problem setting. In other words, \ac{RDT} is agnostic on any arbitrary choice of the distortion function. This choice, nevertheless, determines the relevant features of the signal\footnote{About MLT, the same can be said of a learning algorithm loss function, which determines what is relevant to be learned.} and should be somehow related to the task we want to perform with the input. An arbitrary distortion function is, in fact, an arbitrary feature selection\cite{tishby:1999}.
+Consequently, we are assuming that the definition of relevance is part of the problem setting. In other words, \ac{RDT} is agnostic on any arbitrary choice of the distortion function. This choice, nevertheless, determines the relevant features of the signal\footnote{About MLT, the same can be said of a learning algorithm loss function, which determines what is relevant to be learned.} and should be somehow related to the task we want to perform with the input. An arbitrary distortion function is, in fact, an arbitrary feature selection~\cite{tishby:1999}.
 
-As we will se further (\ref{sec:IB_principle},~\citeauthor{tishby:1999}~\cite{tishby:1999} propose a way to cope with this potential pitfall.
+As we will se further (\cref{sec:IB_principle}),~\citeauthor{tishby:1999}~\cite{tishby:1999} propose a way to cope with this potential pitfall.
 
 \subsection{\ac*{RDT} as a variational problem}\label{RDT problem}
 \begin{definition}
-	 The \bt{rate-distortion function}, denoted by $R(D)$ is defined as:
+	 The \textbf{rate-distortion function}, denoted by $R(D)$ is defined as:
 	 \begin{align}
 		R(D) \equiv \underset{p(z|x):~ \langle d(x;z) \rangle \leq D}{\min} I[\rvZ;\rvX]. \label{rate-distortion function}
 	\end{align}
@@ -59,13 +53,8 @@ As we will se further (\ref{sec:IB_principle},~\citeauthor{tishby:1999}~\cite{ti
 
 Therefore, $R(D)$ is the minimal achievable rate among all normalized conditional distributions, $p(z|x)$, for which the distortion constraint is satisfied. The \emph{rate-distortion function} is a non-increasing convex function of D in the \emph{distortion-compression plane} (\cref{fig:distortion-compression-plane}\footnote{We will explain what $\beta$ means later.})~\cite{cover:2006}.
 
-	\begin{figure}
-		[htb] \centering
-		\includegraphics[width=
-		.7\textwidth]{distortion-compression}
-		\caption{The rate-distortion function, $R(D)$, in the distortion-compression plane.}
-	\label{fig:distortion-compression-plane}
-	\end{figure}
+\blockfigure{distortion-compression-plane}{1}{The rate-distortion function, $R(D)$, in the distortion-compression plane.}
+
 The region above the curve corresponds to all achievable \emph{distortion-compression} pairs, while below the curve is the non-achievable region. Let $\{D, I_{\rvX}\}$ be a \emph{distortion-compression} pair, if it is in the achievable region there is a representation $\rvZ$ with a compression level $I[\rvZ;\rvX]=\Ix$ and an expected distortion of at most $D$. If it is in the non-achievable region, there is no such representation $\rvZ$. This limit on the achievability of representations is a direct consequence of Shannon's laws (\ref{shannon_laws}).
 
 Instead of solving the minimization problem in \eqref{rate-distortion function} exactly, the problem is usually approximated by the following Lagrangian relaxation functional:
@@ -88,14 +77,14 @@ under the normalization constraint $\sum_z p(z|x)=1, \forall x \in \aXX$.
 		\frac{\partial R}{\partial D} = - \beta.
 	\end{align}
 \end{theorem}
-This is an implicit solution\footnote{Implicit solution means a solution in which dependent variable is not separated.} as $p(z)$ on the right-hand side of \eqref{exponential-form} depends on $p(z|x)$\footnote{$p(z)=\sum_{x,z} p(z|x)~p(z)$}.
+This is an implicit solution\footnote{Implicit solution means a solution in which dependent variable is not separated.} as $p(z)$ on the right-hand side of \cref{exponential-form} depends on $p(z|x)$\footnote{$p(z)=\sum_{x,z} p(z|x)~p(z)$}.
 
 \section{The IB Principle: relevance through a target variable}\label{sec:IB_principle}
 The problem of extracting a relevant summary of data depends on a suitable definition of relevance. The main weakness of the \ac{RDT} approach is that it addresses relevance through a distortion function that is not related to a specific task at hand.
 
-The \bt{IB Principle}, suggested by \citeauthor{tishby:1999}\cite{tishby:1999} introduces an alternative approach: defining a ``target'' variable is simpler and more direct than defining a distortion measure.
+The \textbf{IB Principle}, suggested by \citeauthor{tishby:1999}\cite{tishby:1999} introduces an alternative approach: defining a ``target'' variable is simpler and more direct than defining a distortion measure.
 
-For example, in speech compression\footnote{By the time of~\cite{tishby:1999} publication, Tishby was working on speech-related problems.}, any compression beyond the signal's entropy cannot be perfectly reconstructed; it is a lossy compression. On the other hand, a transcript has orders of magnitude lower entropy than the acoustic waveform, which means that for the task of understanding what has been transmitted, it is possible to compress the signal \emph{much} further without losing any information about meaning~\cite{tishby:1999}.
+For example, in speech compression\footnote{By the time of~\citeonly{tishby:1999} publication, Tishby was working on speech-related problems.}, any compression beyond the signal's entropy cannot be perfectly reconstructed; it is a lossy compression. On the other hand, a transcript has orders of magnitude lower entropy than the acoustic waveform, which means that for the task of understanding what has been transmitted, it is possible to compress the signal \emph{much} further without losing any information about meaning~\cite{tishby:1999}.
 
 \begin{figure}
 	[htb] \centering
@@ -110,7 +99,7 @@ In many situations, we have access to an additional variable that determines wha
 \subsection{The IB Problem Setting}\label{ib_problem_setting}
 \subsubsection{Definitions}
 \begin{enumerate}
-	\item Let $\rvX$ be a random variable that denotes the \textbf{Source} \footnote{The IB problem is a one-shot coding problem, the operations are performed letterwise~\cite{zaidi:2020}.} of \textbf{messages} $\rx \in \sA_{\rvX}$;
+	\item Let $\rvX$ be a random variable that denotes the \textbf{Source} \footnote{The IB problem is a one-shot coding problem, the operations are performed letterwise~\citeonly{zaidi:2020}.} of \textbf{messages} $\rx \in \sA_{\rvX}$;
 	\item Let $\rvY$ be a random \textbf{relevant variable}  (or \textbf{Target}) which defines the intended meaning $p(y|x)$ of the message $x$;
 	\item Let $\rvZ$ be an \textbf{information bottleneck} variable, the representation, that obeys the Markov chain $\rvY \leftrightarrow \rvX \leftrightarrow \rvZ$;
 	\item Let the conditional p.d.f $p(z|x)$ be the \textbf{encoder}, \ie a stochastic mapping from each value of $x \in \sA_{\rvX}$ to a codeword $z \in \sA_{\rvZ}$;
@@ -130,15 +119,15 @@ In many situations, we have access to an additional variable that determines wha
   \end{enumerate}
 \subsubsection{Problem statement}
 % The \emph{information bottleneck} consists of finding a representation $\rvZ$ for $\rvX$ that preserves the maximum information about $\rvY$, squeezing the information that $\rvX$ contains on $\rvY$ through a \emph{bottleneck} $\rvZ$ defined by a limited set of codewords $\sA_{\rvZ}$.
-The \emph{information bottleneck problem} consists of finding an encoder $p(z|x)$ that produces a codebook  $\rvZ$ that compress $\rvX$ as much as possible, i.e.\ $I(\rvX ; \rvZ)$ is minimal, while keeping the \emph{relevant information} of $\rvX$ for the task of predicting $\rvY$, $I(\rvZ;\rvY)$. In other words, the representation $\rvZ$ acts like a \bt{bottleneck} that "squeezes" the relevant information that $\rvX$ contains about the target $\rvY$ in a compressed form, hence the name "information bottleneck".
+The \emph{information bottleneck problem} consists of finding an encoder $p(z|x)$ that produces a codebook  $\rvZ$ that compress $\rvX$ as much as possible, i.e.\ $I(\rvX ; \rvZ)$ is minimal, while keeping the \emph{relevant information} of $\rvX$ for the task of predicting $\rvY$, $I(\rvZ;\rvY)$. In other words, the representation $\rvZ$ acts like a \textbf{bottleneck} that "squeezes" the relevant information that $\rvX$ contains about the target $\rvY$ in a compressed form, hence the name "information bottleneck".
 \subsection{Relation to other Information Theory Problems}
 Connections between problems allow extending ideas from one setup to another. In this regard, the IB problem is closely related to other coding problems like the \emph{Indirect} or \emph{Remote Source-coding problem}, also known as the \emph{CEO Problem}, and the \emph{privacy funnel problem}\cite{zaidi:2020}.
 \subsection{Relation to Minimum Sufficient Statistics}
-As we have said before,  a \bt{statistic} is a function of a random variable that does not depend on its parameters. In the IB problem, the target variable is what we want to predict. $\rvY$ acts as a parameter of $\rvX$ and  $\rvZ \ind \rvY$. Thus, \emph{the representation $\rvZ$ is a statistic of $\rvX$}.
+As we have said before,  a \textbf{statistic} is a function of a random variable that does not depend on its parameters. In the IB problem, the target variable is what we want to predict. $\rvY$ acts as a parameter of $\rvX$ and  $\rvZ \ind \rvY$. Thus, \emph{the representation $\rvZ$ is a statistic of $\rvX$}.
 
-For $\rvZ$ to be a \bt{sufficient statistic} of $\rvX$ w.r.t. $\rvY$, it must preserve all relevant information in $\rvX$, $I[Y;X]=I[Z;X]$. In other words, no other statistic of $\rvX$ can provide any additional information as to the value of $\rvY$ than $\rvZ$ does.
+For $\rvZ$ to be a \textbf{sufficient statistic} of $\rvX$ w.r.t. $\rvY$, it must preserve all relevant information in $\rvX$, $I[Y;X]=I[Z;X]$. In other words, no other statistic of $\rvX$ can provide any additional information as to the value of $\rvY$ than $\rvZ$ does.
 
-The representation is \bt{minimal} if it is the smallest among all possible representations.
+The representation is \textbf{minimal} if it is the smallest among all possible representations.
 
 Therefore, we can say that the information bottleneck is the problem of finding the \emph{minimum sufficient statistics} of the random variable $\rvX$ w.r.t $\rvY$, and therefore, IB Lagrangian gives the minimum approximately sufficient statistic.
 \section{The IB functional}\label{sec:ib_functional}
@@ -160,7 +149,7 @@ A straighforward observation is that the Markovian relation characterizes $p(z)$
 	\end{cases}
 \end{align}
 
-Moreover, the plane where the horizontal axis corresponds to $I[\rvZ;\rvX]$ and the vertical axis to $I[\rvZ;\rvY]$, named \bt{information plane} (see Figure \cref{fig:information-plane}), is the natural equivalent to the distortion-compression plane in \acl{RDT} (see \cref{fig:distortion-compression-plane})\footnote{The horizontal and vertical axis are inverted for consistency with how~\cite{tishby:2015} define the information plane. Therefore, whereas the rate-distortion function is convex, the IB curve is concave.}. Let the pair ${R, \Iy}$ denote some levels of compression and relevant information, respectively. If this pair is located below the curve, there is some compressed representation $\rvZ$ with a compression level $R=I[\rvZ;\rvX]$ and relevant information $\Iy=I[\rvZ;\rvY]$. The points laying on the IB Curve are the optimal representations for a certain level of relevant-information (or precision) $\Iy$ or a certain level of compression (or complexity) $R$.
+Moreover, the plane where the horizontal axis corresponds to $I[\rvZ;\rvX]$ and the vertical axis to $I[\rvZ;\rvY]$, named \textbf{information plane} (see Figure \cref{fig:information-plane}), is the natural equivalent to the distortion-compression plane in \acl{RDT} (see \cref{fig:distortion-compression-plane})\footnote{The horizontal and vertical axis are inverted for consistency with how~\cite{tishby:2015} define the information plane. Therefore, whereas the rate-distortion function is convex, the IB curve is concave.}. Let the pair ${R, \Iy}$ denote some levels of compression and relevant information, respectively. If this pair is located below the curve, there is some compressed representation $\rvZ$ with a compression level $R=I[\rvZ;\rvX]$ and relevant information $\Iy=I[\rvZ;\rvY]$. The points laying on the IB Curve are the optimal representations for a certain level of relevant-information (or precision) $\Iy$ or a certain level of compression (or complexity) $R$.
 
 
 \begin{figure}

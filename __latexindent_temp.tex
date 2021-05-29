@@ -1,89 +1,119 @@
-\pdfmapfile{=ua1.map} % hack for pdf insertion
-% Provides math enviroments, math symbols and more things useful for math.
-\usepackage{amsmath,mathtools,empheq}
-\usepackage{amsthm}
-\usepackage{thmtools}
-\usepackage{thm-restate}
-\usepackage{ bm, nicefrac}
-\usepackage{thmtools}
-\usepackage{bigints}
-\usepackage{longtable}
-\usepackage{pdflscape}
-\usepackage[printonlyused, smaller]{acronym}
-\usepackage{venndiagram} % draw Venn
-\usepackage{neuralnetwork} % dreaw ANNs
-\usepackage{qtree} % draw trees
-\usepackage{tikz}
-\usepackage[makeroom]{cancel}% cancel terms in equations
-\usetikzlibrary{calc}
-% https://tex.stackexchange.com/a/114770
-\usepackage{etoolbox}
-\robustify\setcounter
-\robustify\addtocounter
-\robustify\setlength
-\robustify\addtolength
-
-\usepackage{epsdice} % draw dices
-% \usepackage{enumerate}
-
-\usepackage[brazilian, english, british]{babel} % Sets the language used. Essential for proper hyphenation. Translates key words like 'figure' or 'table'. Note that 'english' is American English.
-
-\usepackage{soul} %to add strike through functionality
-\usepackage{listings}
-
- % need to create subfigures with captions
-
-% % latexsym, amscd,
-% \usepackage{graphicx} % Provides inclusion of graphics and a proper interface for '\in­clude­graph­ics'.
-% % Su­per­sedes 'epsfig' and 'graphics'.
-
-% \usepackage[shortlabels]{enumitem} % Provides control over list environments. Supersedes 'enumerate', which gives enumerate environment an optional argument which determines the style in which the counter is printed.
-
-% \usepackage[all]{hypcap} % Anchors links to the beginning of their respective floats. Load after hyperref.
-
-% % \usepackage{pgfplots}  make simpler the inclusion of plots in your documents.
-% % \pgfplotsset{compat=1.8}
-% % \pgfplotscreateplotcyclelist{smart}{%
-% %   tangoplum,semithick,every mark/.append style={fill=tangoplum!80!black},mark=*\\%
-% %   tangogreen,semithick,every mark/.append style={fill=tangogreen!80!black},mark=square*\\%
-% %   tangoorange,semithick,every mark/.append style={fill=tangoorange!80!black},mark=otimes*\\%
-% %   tangoblue,semithick,mark=star\\%
-% %   tangobutter,semithick,every mark/.append style={fill=tangobutter!80!black},mark=diamond*\\%
-% %   tangored,semithick,every mark/.append style={solid,fill=tangored!80!black},mark=*\\%
-% % }
-% % \pgfplotsset{cycle list name=smart}
+% !TeX root = ./thesis.tex
+% !TEX encoding = UTF-8 Unicode
+% !TEX program = latexmk
+\documentclass{dissertation}
 
 
+\definecolor{medium-gray}{HTML}{666666}
+\definecolor{Burgundy}{RGB}{144, 0, 32}
 
 
+%%% Public TikZ libraries
+\input{packages}
+\input{macros}
+\title{The Emergence of an Information Bottleneck Theory of Deep Learning}
+\author{Frederico Guth}
+\date{\today}
 
-% % -------
+\begin{document}
+% \setcounter{totalnumber}{5}
+\frenchspacing \raggedbottom \selectlanguage{english}
+\frontmatter{}
+% \input{frontbackmatter/titlepage}
+% \blankpage{}
+% \input{frontbackmatter/abstract}
+% \blankpage{}
+% \input{frontbackmatter/resumoextendido}
+% \blankpage{}
 
-% \usepackage{wrapfig} % wraps figures in text
-% \usepackage{pdfpages} % allows the inclusion of pdf pages as part of the document
+\tableofcontents*\addcontentsline{toc}{chapter}{Contents}
+\clearpage{}
+\include{frontbackmatter/Acronyms.tex}
 
-% % \usepackage{amsmath}
-% \usepackage{amssymb} % to have symbols like \therefore
-% % \usepackage[strict]{changepage} % adjust margins for images
-% \usepackage{tikz} % used by venndiagram package
-% \usetikzlibrary{patterns, matrix,chains,positioning,decorations.pathreplacing,arrows}
-% \usepackage{calc} % needed for largeimage
+% \listoffigures*\addcontentsline{toc}{chapter}{List of Figures}
+% \vspace{\baselineskip}
+% \clearpage{}
 
-% \captionsetup{format=plain, font=small, labelfont=bf}
-% \usepackage{makeidx}\makeindex
+% \listoftables*\addcontentsline{toc}{chapter}{List of Tables}
+% \clearpage{}
 
-% \usepackage[export]{adjustbox}
-% % \usepackage[mathscr]{euscript}
-% % \let\euscr\mathscr\let\mathscr\relax % just so we can load this and rsfs
-% % \usepackage[scr]{rsfso}
-% % \usepackage{svg}
-% % \usepackage{tocloft}
+%\input{frontbackmatter/acknowledgments}\addcontentsline{toc}{chapter}{Acknowledgments}
+% \cleardoublepage{}
+
+\mainmatter{}
+% \begin{fullwidth}
+% \part{Prologue}
+% \end{fullwidth}
+
+
+\cleardoublepage{}
+% \include{Chapters/intro}
+
+% \begin{fullwidth}
+% \cleardoublepage \part{Background}\label{pt:background}
+% \end{fullwidth}
+% \include{Chapters/ai}
+% \include{Chapters/prob}
+% \include{Chapters/mlt}
+% \include{Chapters/info}
+% \renewcommand{\thepart}{}
+% \begin{fullwidth}
+% \cleardoublepage \part{INTERMEZZO}\label{pt:intermezzo}
+% \end{fullwidth}
+% \include{Chapters/it-lt}
+
+% \include{Chapters/next}
+% \ctparttext{Where you can put some informational part preamble text here.}
+% \renewcommand{\thepart}{\roman{part}}
+% \@addtoreset{part}{thepart}
+% \setcounter{part}{2}
+% \setcounter{thepart}{2}
+% \begin{fullwidth}
+% \cleardoublepage \part{The emergence of a theory}\label{pt:emergence_of_theory}
+% \end{fullwidth}
+\include{Chapters/ib-method}
+% \include{Chapters/ib-rl}
+% \include{Chapters/ib-dl}
+% \include{Chapters/ib-lt}
 
 
 
 
-% % \usepackage[shortlabels]{enumitem} % shortlabels provide compatibility with enumerate package - enumitem permits change margin of item
-% % % \setlist[enumerate,1]{label={\bfseries\arabic*.}} % alow sublist referencing
-% % \setlist[enumerate,2]{label={\bfseries\alph*)},ref={\bfseries\theenumi\alph*)}}
-% % \usepackage{amsthm} % add theorem definition
 
+
+% \input{mainmatter/preliminaries}
+
+% \begin{fullwidth}
+% \part{Security Arguments for Block Ciphers}
+% \end{fullwidth}
+
+% \input{mainmatter/act}
+% \input{mainmatter/bison}
+
+
+% \begin{fullwidth}
+% \part{Epilogue}
+% \end{fullwidth}
+
+% \input{frontbackmatter/conclusion}
+
+\begin{fullwidth}
+\printbibliography{}
+\end{fullwidth}
+
+\cleardoublepage{}
+
+\chapter*{Versicherung an Eides Statt}\addcontentsline{toc}{chapter}{Versicherung an Eides Statt}
+
+Ich versichere an Eides statt, dass ich die eingereichte Dissertation selbstständig und ohne unzulässige fremde Hilfe verfasst, andere als die in ihr angegebene Literatur nicht benutzt und dass ich alle ganz oder annähernd übernommenen Textstellen sowie verwendete Grafiken, Tabellen und Auswertungsprogramme kenntlich gemacht habe.
+
+Außerdem versichere ich, dass die vorgelegte elektronische mit der schriftlichen Version der Dissertation übereinstimmt und die Abhandlung in dieser oder ähnlicher Form noch nicht anderweitig als Promotionsleistung vorgelegt und bewertet wurde.
+
+\vspace{1cm}
+\noindent
+\rule{45mm}{0.1pt} \hfill{} \rule{45mm}{0.1pt}\\
+Datum \hfill{} Unterschrift
+
+\cleardoublepage{}
+
+\end{document}
