@@ -2,14 +2,8 @@
 \chapter{Information Bottleneck and Representation Learning}\label{ch:ib_and_rl}
 
 %************************************************
-\begin{quotation}
-	\small \textit{ \flushright
-	We know the past, but cannot control it.\\
-	We control the future, but cannot know it.
-	\flushright --- Claude Shannon\\
-	\vspace{1cm}}
-\end{quotation}
-
+\openepigraph{We know the past, but cannot control it.\\
+We control the future, but cannot know it.}{Claude Shannon}
 
 This chapter presents the idea of using the \acf{IB} method for representation learning in general, not specific for Deep Learning, which will be the subject of \cref{ch:ib_and_dl}.
 
@@ -40,7 +34,7 @@ What are good representations of the data? A good representation makes a subsequ
 
 \citeauthor{achille:2017emergence}~\cite{achille:2017emergence} present a mathematical definition using information theory.
 
-\begin{description}[wide=0\parindent]% \setlength\itemsep{0em}\leftmargin=0pt
+\begin{description}
     \item [task]: In supervised learning, we want to find the stochastic conditional distribution \textbf{$p(y|x)$} of a target variable $\rvY$ that we refer as the \textbf{task}:
     \begin{align*}
         \rvY := P(\rvY|\rvX=x)
@@ -89,7 +83,7 @@ The only property of the desiderata that does not correspond with learning algor
 
 \subsection{Invariant if minimal}\label{sec:invariant_if_minimal}
 
-\begin{theorem}[\citeauthoritle{achille:2019phd}\cite{achille:2019phd}, Proposition 2.4.1] Let $\rvN$ be a nuisance for the target $\rvY$ and let $\rvZ$ be a sufficient representation of the input $\rvX$ w.r.t $\rvY$. Suppose that $\rvZ$ depends on $\rvN$ only through $\rvX$ ( i.e.\ , $\rvN \to \rvX \to \rvZ$). We also consider that $\rvX$ has all information about $\rvY$, therefore we can say that it is a deterministic function of $\rvY$ and nuisances $\rvX:= f(\rvY; \rvN)$.
+\begin{theorem}[\citeonly{achille:2019phd}, Proposition 2.4.1] Let $\rvN$ be a nuisance for the target $\rvY$ and let $\rvZ$ be a sufficient representation of the input $\rvX$ w.r.t $\rvY$. Suppose that $\rvZ$ depends on $\rvN$ only through $\rvX$ ( i.e.\ , $\rvN \to \rvX \to \rvZ$). We also consider that $\rvX$ has all information about $\rvY$, therefore we can say that it is a deterministic function of $\rvY$ and nuisances $\rvX:= f(\rvY; \rvN)$.
 
 To say that   $\rvZ$ is invariant if and only if it is minimal implies that $\IZN = \IZX - \IXY$:
 \begin{align*}
@@ -130,7 +124,7 @@ $I[\rvZ;\rvN] = I[\rvZ;\rvX] - \IXY -\epsilon, ~0 \leq \epsilon \leq H[\rvY|\rvX
 
 As a consequence of this proposition, it is possible to construct invariant representations, which will generalise well, by reducing the amount of information the representation $\rvZ$ contains about the input $\rvX$ while keeping $\IZY$, the amount of information we need for the task. As $H[\rvY] \ll H[\rvX]$~\textbf{generalisation is determined by the compressibility of the input}. Thus, it is independent on the hypothesis space of the learning algorithm.
 
-\section[IBT Learning Problem]{IBT Learning Problem: Learning Approximately Minimal Sufficient Disentangled Representations}\label{sec:ibt_learning_problem}}
+\section[IBT Learning Problem]{IBT Learning Problem: Learning Approximately Minimal Sufficient Disentangled Representations}\label{sec:ibt_learning_problem}
     We have discussed what consistitute a good representation. This section is about finding them. For that, we will adjust the IB Problem Setting (\cref{ib_problem_setting}) for supervised learning\footnote{Trying to be consistent with \cref{ch:mlt, ch:ib}, we will repeat some definitions in this section.}.
     \begin{figure}
       \centering
@@ -187,7 +181,7 @@ Given the problem setting above, the \ac{IBT} learning problem is to find the en
         & 0 \leq \IXY - \IZY \nonumber\\
         \quad & 0 \leq TC(Z)\nonumber
     \end{align}
-    This non-linearly constrained optimisation problem\footnote{Prior to the publishing of \cite{alemi:2016} in 2017, there was no known algorithm to minimise the IB Lagrangian for discrete $\rvX$ and $\rvY$ with large state spaces or non Gaussian continuous joint distribution.} is very similar to the IB Problem (\cref{sec:IB_principle}). It just adds the total correlation constraint and assumes no knowledge over $\PXY$. ~\citeauthor{tishby:1999}~\cite{tishby:1999} proposed solving the IB problem using a relaxed minimization, the IB Lagrangian:
+    This non-linearly constrained optimisation problem\footnote{Prior to the publishing of \citeonly{alemi:2016} in 2017, there was no known algorithm to minimise the IB Lagrangian for discrete $\rvX$ and $\rvY$ with large state spaces or non Gaussian continuous joint distribution.} is very similar to the IB Problem (\cref{sec:IB_principle}). It just adds the total correlation constraint and assumes no knowledge over $\PXY$. ~\citeauthor{tishby:1999}~\cite{tishby:1999} proposed solving the IB problem using a relaxed minimization, the IB Lagrangian:
     \begin{equation}
         \begin{split}
         \underset{p(z|x)}{\min} \quad  & \IZX  \\
@@ -231,7 +225,7 @@ Given the problem setting above, the \ac{IBT} learning problem is to find the en
     Where $\hat H(p, p_{\theta})$ is the cross-entropy, and the second term is a regulariser that penalises the transfer of information from $\rvX$ to $\rvZ$. In other words, the regulariser penalises complexity measured as $\IZX$. The usage of cross-entropy loss and this kind of regularisers is widespread in practice. \cite{achille:2019phd} gave theoretical ground for such choices\footnote{The reference constraint their findings to \acp{DNN} optimised with \ac{SGD}. We find the result more general than that.}.
 
     \begin{corollary}
-    Any learning algorithm that\footnote{This insight allowed \cite{alemi:2016,achille:2018infodropout} independently develop basically the same algorithm for estimating mutual information for any distribution using \acp{DNN}.}:
+    Any learning algorithm that\footnote{This insight allowed \citeonly{alemi:2016,achille:2018infodropout} independently develop basically the same algorithm for estimating mutual information for any distribution using \acp{DNN}.}:
      \begin{itemize}
          \item assumes a stochastic $p(y|x)$;
          \item uses the cross-entropy loss;
@@ -250,7 +244,7 @@ In \cref{ch:mlt}, we were presented with the \emph{learning problem} setting:
 \end{figure}
 
 The crucial problem in \ac*{MLT} is that we want to predict the behaviour (bound) of learning algorithms in future data while we can only access past performance. This dichotomy translates to representation learning by two intertwined but different representations:
-\begin{enumerate}[label=\protect\circled{\arabic*}]
+\begin{enumerate}% [label=\protect\circled{\arabic*}]
   \item the representation of a \emph{dataset} (past data), a function that can be stored in memory for the later accomplishment of the task. It needs to keep useful information for future decisions without squandering resources in remembering spurious correlations or one-time events.
   \item the representation of an \emph{input example} (current data): which need to keep the essence of the scene at hand;
 \end{enumerate}
@@ -271,7 +265,7 @@ In \cref{sec:duality}, we will formally address this issue.
 
  \cite{zhang:2016} demonstrates that the expressivity of \acp{DNN} is enough to fit random labels. Thus, at least for \acp{DNN}, generalisation is more \emph{not overfitting} than {not underfitting}.  This may be the case for other learning techniques as well. In this section, we will keep \emph{rethinking} generalisation on this new information-theorethic perspective and tray to elucidate how cross-entropy loss relates to overfitting and memorisation.
 
-Classical \ac{MLT} assumes that we select an hypothesis $h$ parametrized by $\theta$. Conceptually, we already \emph{rethought} generalisation as being determined by the compressibility of the input (\cref{sec:invariant_if_minimal}). In this sense, the task is determined by the training dataset only\footnote{\cite{achille:2019phd} defines the task as the dataset distribution for which we only have one sample.}. Thus, we will assume the dataset is sampled from some generative model $P(\rvD|\theta)$. In this context~\cite{achille:2017emergence}:
+Classical \ac{MLT} assumes that we select an hypothesis $h$ parametrized by $\theta$. Conceptually, we already \emph{rethought} generalisation as being determined by the compressibility of the input (\cref{sec:invariant_if_minimal}). In this sense, the task is determined by the training dataset only\footnote{\citeonly{achille:2019phd} defines the task as the dataset distribution for which we only have one sample.}. Thus, we will assume the dataset is sampled from some generative model $P(\rvD|\theta)$. In this context~\cite{achille:2017emergence}:
 \begin{theorem}
   Given $\rvD=(\rvX,\rvY),~ \rvD \sim P(\rvX, \rvY| \theta)$, and a representation $\rvW$ of $\theta$, s.t. $\rvY|\rvX \to W \to \theta$ form a Markov-chain:
   \begin{align*}
@@ -334,7 +328,7 @@ Let us examine the cross-entropy decomposition:
   H_{p,q}[\rvD|\rvW]=\underbrace{H_p[\rvD|\theta]}_{\text{intrinsic error}} + \underbrace{I[\theta;\rvD|\rvW]}_{\text{sufficiency}} +
   \underbrace{\KL(p \parallel q)}_{\text{efficiency}}-\underbrace{I[\rvD;\rvW|\theta]}_{\text{memorisation}}
 \end{align*}
-\begin{description}[wide=0\parindent]% \setlength\itemsep{0em}\leftmargin=0pt
+\begin{description}% [wide=0\parindent]
   \item[intinsic error:] $H_{p}[\rvD,\theta]$ relates to the intrinsic error that we would find even if we knew $p_{\theta}$;
   \item[sufficiency:] $I[\theta;\rvD|\rvW]$ measures how much information of $\theta$ was compressed in the weights;
   \item[efficiency:] $\KL(p \parallel q)$ measures the efficiency of the representation,\ie the number of additional bits we need to represent the input with $q(w|D)$ instead of using $p_{\theta}$ (see \cref{sec:cross-entropy});
@@ -389,7 +383,7 @@ The question now is if this new Lagrangian emerged from trying to eliminate over
     \begin{figure}[hbt!]
         \centering
         \includegraphics[width=0.7\linewidth]{efficient_colornaming_result}
-        \caption{Different languages (blue circles) achieve near-optimal compression (IB curve in black)~\cite{zaslavsky:2018}. Reproduced with permission.}\label{efficient_colornaming_result}
+        \caption{Different languages (blue circles) achieve near-optimal compression (IB curve in black)~\citeonly{zaslavsky:2018}. Reproduced with permission.}\label{efficient_colornaming_result}
     \end{figure}
 
     In \cref{efficient_colornaming_result}, it is possible to see evidence that languages efficiently compress ideas into words by optimising the tradeoff between complexity and accuracy of the lexicon according to the IB principle.

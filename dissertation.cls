@@ -539,3 +539,4 @@
   \end{fullwidth}
 
 }
+\newcommand{\bt}[1]{\textbf{#1}}
