@@ -4,38 +4,22 @@
 \chapter{Machine Learning Theory}\label{ch:mlt}
 
 %************************************************
-\begin{quotation}
-	\small \textit{ \flushright Mathematics operates inside the thin layer \\
-	between the trivial and the intractable.\\
-	\flushright --- Andrey Kolmogorov\\
-	\vspace{1cm} }
-\end{quotation}
+\openepigraph{Mathematics operates inside the thin layer
+between the trivial and the intractable.}{Andrey Kolmogorov}
 
-In which we present the theoretical framework of Machine Learning, the PAC model, theoretical guarantees for generalisation, and expose criticism due to its lack of explanation on Deep Learning phenomena\footnote{This chapter is influenced by the online lecture~\citeauthor{shawe-taylor:2018}, the online lecture series~\citeauthor{mello:2018online} and the book~\citeauthor{mello:2018}. }.
-
+In which we present the theoretical framework of Machine Learning, the PAC model, theoretical guarantees for generalisation, and expose criticism due to its lack of explanation on Deep Learning phenomena\footnote{This chapter is influenced by the online lecture~\citeonly{shawe-taylor:2018}, the online lecture series~\citeonly{mello:2018online} and the book~\citeonly{mello:2018}. }.
 
 \section{Motivation} As already discussed, learning is the process of inferring general rules to perform a specific task by observing limited examples. The learning algorithm must perform well in the sample already seen and, more importantly, in previously unseen examples.
 
 How can we prove that an algorithm learned? We may know its performance in the given sample, but does it translate to any sample? Can we guarantee bounds to the error in an unknown distribution of examples even if we have just a limited sample of it? Can we bound the number of samples needed (sample complexity) to ensure accuracy on unseen examples? How does the sample complexity grow?
-\begin{figure}[hbt!]
-	\centering
-	\includegraphics[width=.6
-	\textwidth]{vc2}
-	\caption{Chervonenkis (Left) and Vapnik (Right).}\label{fig:VC}
-\end{figure}
+\sidefigure{vc}{0}{Chervonenkis (Left) and Vapnik (Right).}
 These are the kind of questions that motivated the development of Machine Learning Theory (MLT). This research field started in Russia by the name of Statistical Learning Theory (SLT), during the late \(1960_s\), with the work of Vapnik and Chervonenkis (see \cref{fig:VC}). In 1984, Leslie Valiant proposed the Probably Approximately Correct (PAC) framework to bring ideas from the Computational Complexity Theory to learning problems, giving birth to the field of Computational Learning Theory (CoLT). Up to the \(1990_s\), STL and CoLT were very active fields.
 We will also limit our overview of MLT to the context of supervised binary classification problems. This limitation is not a deficiency of the theory but a mere choice of scope for this document.
 
 
 \section {The Learning Problem}
 The goal of learning is to understand the world from experience, coming up with a theory, a tested hypothesis.
-
-\begin{figure}[ht]
-	\centering
-	\includegraphics[width=0.45
-	\textwidth]{concept}
-	\caption{A \emph{concept} \(c\) is an idealised mapping from the input space \(\XX\) to output space \(\YY\). Each point on the left is an instance \(\rx_i\). Note that given that \(\YY\) is binary, \(c \subset \XX\).}
-\end{figure}
+\sidefigure{concept}{0}{A \emph{concept} \(c\) is an idealised mapping from the input space \(\XX\) to output space \(\YY\). Each point on the left is an instance \(\rx_i\). Note that given that \(\YY\) is binary, \(c \subset \XX\).}
 
 The learning task is the \emph{concept} \(c\) we want to learn. The concept is the idealised function that maps an instance of the problem \(\rx_i\) from the input space \(\XX\) (also known as problem space) to a solution \(\ry_i\) of the output space \(\YY\) (also known as label space). In the PAC framework, the convention is that labels are binary, \(\YY = \{-, +\}\), therefore, \(c \subset \XX\). A concept class \(\CC\) is a set of concepts \(c\), thus, a set of sets of \(\XX\).
 
@@ -43,13 +27,9 @@ We imagine there is a certain distribution \(\DD = \PXY \) in nature, from which
 
 \subsection{The learning problem setting}
 
-Supervised learning has three main components (see \cref{fig:problem_setting}):
-\begin{figure}
-	[ht] \centering
-	\includegraphics[width=
-	\textwidth]{learning_settings_1}
-	\caption{Problem setting.}\label{fig:problem_setting}
-\end{figure}
+Supervised learning has three main components (see \cref{fig:learning_problem_setting}):
+\blockfigure{learning_problem_setting}{1}{Learning problem setting.}
+
 \begin{enumerate}
 	\item A \textbf{generator} of vectors randomly draw from a probability distribution \(P(\rvX)\), \(x\sim P(\rvX), x \in \XX \)\footnote{In \cref{ch:information}, we used $\sA_{\rvX}$ to represent the domain of $\rvX$ to emphasise that the domain was finite, it was an alphabet. Here we use $\XX$ to remember that this domain possibly is infinite.}, which represent instances of the problem\footnote{\(P(\rvX=\rx_i) = P_{\rvX}(\rx_i) = \sum_j P_{\rvX\rvY}(\rx_i, \ry_j) \therefore P_{\XX}\)is just a consequence of \(\PXY \therefore \rx \sim P_{\XX} \equiv \rx \sim P_{\rvX\rvY}\).};
 	\item A \textbf{task supervisor} that knows the concept and returns an output vector \(\ry_i\) for every input vector \(\rx_i\):
@@ -74,13 +54,9 @@ The problem of learning is choosing from the \emph{hypothesis space}\footnote{Hy
 	\item \textbf{Labels may assume non-deterministic values:} due to noise or label overlap.
 \end{enumerate}
 
-\subsection{Hypothesis spaces}\label{hypothesis_space}
-\begin{figure}
-	[ht!] \centering
-	\includegraphics[width=0.7
-	\textwidth]{hspaces}
-	\caption{Different hypothesis spaces for the same sample.}\label{fig:hypothesis_spaces}
-\end{figure}
+\subsection{Hypothesis spaces}\label{sec:hypothesis_space}
+\blockfigure{hypothesis_spaces}{1}{Different hypothesis spaces and the same sample.}
+
 The problem setting relies on the idea of a \emph{hypothesis space} (also known as a \emph{hypothesis class}). A hypothesis space is the set of all hypothesis generatable by a functional learning algorithm \( \AA\)\footnote{We can also say that the hypothesis space is the language defined by the learner.}. In the same hypothesis space \(\HH\), hypotheses are differentiated by their parameter vector \(\theta\). Choosing a hypothesis \(h_i\) is choosing its parameter \(\theta_i\).
 \begin{align}
 	h: \XX \times \Theta \to \YY, \\
@@ -109,14 +85,9 @@ With this empirical risk \(\hat{R}_{S}\) that we can evaluate, we find the hypot
 \end{align}
 According to the law of large numbers (\cref{law_of_large_numbers}), if the sample is large enough, by induction, a hypothesis generated optimising \(\hat{R}_{S}\) is close to \(R\). However, it is essential to notice that we still have to discuss at which rate does \(\hat{R}_{S}\) converge to \(R\) w.r.t. the sample size.
 
-
 \section{Bias-Variance trade-off}\label{sec:bias-variance}
 When we define a subset of \(\HH \subset \HH_{all}\) where to look for our hypothesis, we are imposing a constraint to the choice, a \emph{bias}. Besides, the subset \(\HH\) can be larger or smaller; for example, the hypothesis space of Neural Networks is much larger than the one of Perceptrons and also covers it \(\HH_{NN} \supset \HH_{\text{Perceptron}}\).
-\begin{figure}
-	[ht] \centering
-	\includegraphics[width=1
-	\textwidth]{bias_variance}
-	\caption{Bias and variance errors}\label{fig:bias-variance} \end{figure}
+\blockfigure{bias_variance}{1}{Bias and variance errors.}
 Accordingly, we can distinguish two kinds of errors due to this constraint:
 \begin{itemize}
 	\item \textbf{Variance error:} represents how far a classifier \(h_i\) is from the best classifier in \(\HH\), \(h_\HH\). With a strong bias (small hypothesis space), any hypothesis \(h_i\) is expected to be closer to \(h_\HH\), there is less variance in the hypothesis space (see Figure~\ref{fig:bias-variance} Perceptron). Finding the best hypothesis in a larger hypothesis space is more laborious and, therefore, takes more resources (time and examples) than in a smaller one (see Figure~\ref{fig:bias-variance} Neural Network).
@@ -128,22 +99,14 @@ These two errors compound the generalisation gap, \(\Delta(h_i)\):
 	&= \underbrace{(R(h_i)-R(h_\HH))}_{\text{Variance Error}}+ \underbrace{(R(h_\HH)-R(h_{\text{Bayes}}) )}_{\text{Bias Error}}
 \end{align}
 Machine learning practicioners will recognise here what is called \emph{overfitting} and \emph{underfitting}:
-\begin{figure}
-	[ht!] \centering
-	\includegraphics[width=0.9
-	\textwidth]{curves}
-	\caption{Example of underfitting and overfitting in a regression problem.}\label{fig:underfitting-overfitting} \end{figure}
+\blockfigure{underfitting-overfitting}{1}{Example of underfitting and overfitting in a regression problem.}
+
 \begin{itemize}
 	\item \textbf{Overfitting:} bias error is small, but variance error is large; High variance is a consequence of fitting to random noise in the training data, rather than the intended outputs.
 	\item \textbf{Underfitting:} bias error is large, but variance error is small; The bias error comes from wrong assumptions in the learning algorithm. Strong bias can cause an algorithm to miss relevant relations between inputs and outputs.
 \end{itemize}
 It is easy to notice that these two errors are conflicting: the stronger the bias, smaller is the \(\HH \subset \HH_{all}\), smaller is the variance error, but bigger is the bias error; and vice-versa (\cref{fig:generalisation_gap}). This trade-off is the central paradigm of Machine Learning Theory~\cite{slonim:2002}, its crucial challenge, and has different names underfitting-overfitting, precision-complexity, and performance-prediction.
-\begin{figure}
-	[ht!] \centering
-	\includegraphics[width=0.8
-	\textwidth]{generalisation_gap}
-	\caption{Generalisation gap.}\label{fig:generalisation_gap}
-\end{figure}
+\sidefigure{generalisation_gap}{0}{Generalisation gap.}
 \textbf{The goal of machine learning algorithms is to come up with the simplest model that explains the data, but not simpler}.
 \begin{quotation}
 	\small \textit{ \flushright There are many more complicated explanations possible than simple ones. Therefore, if a simple explanation happens to fit your data, it is much less likely this is happening just by chance.\\

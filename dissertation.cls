@@ -521,7 +521,7 @@
 }
 
 \newcommand{\blockfigure}[3]{
-  \begin{figure}
+  \begin{figure}[hbt!]
     \begin{sidecaption}[#3]{#3}\label{fig:#1}
       \centering
       \includegraphics[width=#2\textwidth]{#1}

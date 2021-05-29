@@ -326,7 +326,7 @@ We call \(P(A_i)\) the \textbf{prior} of A, and \(P(A_i|B)\) the \textbf{posteri
 \begin{definition}
 	A \textbf{random variable} is a mapping \(\rvX:\Omega \to \Real\) that assigns a real number \(\rvX(\omega)\) to each outcome \(\omega\), \(\omega \mapsto \rvX(\omega)\).
 \end{definition}
-\blockfigure{random_variable}{0}{Random variable.}
+\sidefigure{random_variable}{0}{Random variable.}
 
 Given a random variable \(\rvX\), the probability of an outcome \(\rx\) can be expressed as:
 \begin{align}
@@ -420,10 +420,8 @@ where \(\mu \in \Real\) (mean) and \(\sigma > 0\) (standard deviation). We say t
 \end{align*}
 where \(\lambda > 0\) is the \emph{rate parameter} of the distribution.
 
-
 \section{Joint Distributions}
-\sidefigure{joint_distribution}{0}{A chart of a joint distribution.}
-
+\sidefigure{joint_distribution}{5}{A chart of a joint distribution.}
 \begin{definition}
 	Given a pair of discrete random variables \(\rvX\) and \(\rvY\), we define the \textbf{joint mass function} by \(p(\rx, \ry)=P(\rvX=\rx,\rvY=\ry)\).
 \end{definition}
@@ -483,14 +481,10 @@ where \(\lambda > 0\) is the \emph{rate parameter} of the distribution.
 
 
 \section{Independent Sampling}
-% \begin{figure}[hbt!] \centering
-% 	\includegraphics[width=
-% 	\textwidth]{sampling2}
-% 	% \caption{An i.i.d. sample (left) and a biased sample (right). Adapted from~\cite{mello:2018}.}\label{fig:sampling}
-% \end{figure}
-  A \emph{sample} is a set of examples drawn from a distribution.
-One common assumption in Machine Learning Theory is that examples are \emph{identically and independently distributed --- i.i.d.} This means that the probability of obtaining a first training example
-.\footnote{In this document, an element of a sampling is called an \emph{example}. } \((\rx_1, \ry_1)\) does not affect which \((\rx_2, \ry_2)\) will be draw in the next observation.
+\blockfigure{sampling}{1}{An i.i.d. sample (left) and a biased sample (right). Adapted from~\citeonly{mello:2018}.}
+
+A \emph{sample} is a set of examples drawn from a distribution.
+One common assumption in Machine Learning Theory is that examples are \emph{identically and independently distributed --- i.i.d.} This means that the probability of obtaining a first training example.\footnote{In this document, an element of a sampling is called an \emph{example}. } \((\rx_1, \ry_1)\) does not affect which \((\rx_2, \ry_2)\) will be draw in the next observation.
 
 The i.i.d. assumption is useful wherever a census of the population of interest, knowing all possible values, is unfeasible. In this usual case, data analysis is carried out using a sample to represent the population. When the sample is i.i.d., each example in the population has the same chance of being observed (\cref{fig:sampling} --- left).
 
