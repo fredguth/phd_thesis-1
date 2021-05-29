@@ -1,0 +1,135 @@
+%*******************************************************
+% Notation
+%*******************************************************
+%  \phantomsection
+
+\pdfbookmark[1]{Notation}{notation}
+\markboth{\spacedlowsmallcaps{Notation}}{\spacedlowsmallcaps{Notation}}
+\chapter*{Notation}\label{notation}
+
+% Sometimes we have to include the following line to get this section
+% included in the Table of Contents despite being a chapter*
+\addcontentsline{toc}{chapter}{Notation}
+This section provides a concise reference describing notation used throughout this document.
+
+% Need to use minipage to keep title of table on same page as table
+% \begin{minipage}{\textwidth}
+% This is a hack to put a little title over the table
+% We cannot use "\section*", etc., they appear in the table of contents.
+% tocdepth does not work on this chapter.
+
+\section*{Numbers and Arrays}
+\bgroup\def\arraystretch{1.8}
+\begin{tabular}{>{\centering}p{1.2in}p{3.5in}}
+  \(\displaystyle a~\) & A scalar (integer or real) \\
+  \(\displaystyle \va~\) & A vector\\
+  \(\displaystyle \va^\frown\vb\) & vector \(\va\) concatenated with vector \(\vb\)\\
+  \(\displaystyle \mA~\) & A matrix\\
+  \(\displaystyle \mI_n~\) & Identity matrix with  \(n\) rows and  \(n\) columns\\
+\end{tabular}
+
+\egroup\index{Scalar}\index{Vector}\index{Matrix}
+
+\section*{Sets}
+\bgroup\def\arraystretch{1.8}
+\begin{tabular}{>{\centering}p{1.2in}p{4in}}
+  \(\displaystyle A~\) & A set\\
+  \(\displaystyle \powerset(A)~\) & The powerset (the set of subsets) of A\\
+  \(\displaystyle \sX, \sR, \sN, \cdots~\) & Special sets (or Spaces) \\
+  \(\displaystyle \{0, 1\}~\) & The set containing 0 and 1 \\
+  \(\displaystyle \{0, \dots, n \}~\) & The set of all integers between  \(0\) and  \(n\) \\
+  \(\displaystyle [a, b]~\) & The real interval including  \(a\) and  \(b\) \\
+  \(\displaystyle (a, b]~\) & The real interval excluding  \(a\) but including  \(b\) \\
+  \(\displaystyle \ra \in \sA~\) &  \(\ra\) is a member of the set  \(\sA~\) \\
+  \(\displaystyle \sB \subset \sA~\) &  \(\sB~\) is a subset of the set  \(\sA~\) \\
+  \(\displaystyle \sA \cap \sB~\) & The intersection of  \(\sA~\) and  \(\sB~\) \\
+  \(\displaystyle \sA \cup \sB~\) & The union of  \(\sA~\) and  \(\sB~\) \\
+  \(\displaystyle \overline{\sA}~\) & The complement of  \(\sA~\) \\
+  \(\displaystyle |{\sA}|~\) & The cardinality of  \(\sA~\) \\
+
+\end{tabular}
+
+\egroup\index{Set}
+
+\section*{Indexing}
+\bgroup\def\arraystretch{1.8}
+\begin{tabular}{>{\centering}p{1.2in}p{4in}}
+  \(\displaystyle a_i~\) & Element  \(i\) of vector  \(\va~\), with indexing starting at 1 \\
+  \(\displaystyle \mA_{i,j}~\) & Element  \(i j~\) of matrix  \(\mA~\) \\
+  \(\displaystyle \mA_{i, :}~\) & Row  \(i\) of matrix  \(\mA~\) \\
+  \(\displaystyle \mA_{:, i}~\) & Column  \(i\) of matrix  \(\mA~\) \\
+\end{tabular}
+\egroup\index{Indexing}
+
+\section*{Linear Algebra Operations}
+\bgroup\def\arraystretch{1.8}
+\begin{tabular}{>{\centering}p{1.2in}p{4in}}
+  \(\displaystyle \mA^\top~\) & Transpose of matrix  \(\mA~\) \\
+  \(\displaystyle \mathrm{\text{det}}(\mA)~\) & Determinant of  \(\mA~\) \\
+\end{tabular}
+\egroup\index{Transpose}\index{Determinant}
+
+\section*{Calculus}
+\bgroup\def\arraystretch{1.8}
+\begin{tabular}{>{\centering}p{1.2in}p{4in}}
+% NOTE: the [2ex] on the next line adds extra height to that row of the table.
+% Without that command, the fraction on the first line is too tall and collides
+% with the fraction on the second line.
+  \(\displaystyle  \frac{\partial y} {\partial x} ~\) & Derivative or partial derivative of \(y~\) with respect to \(x~\) \\
+  \(\displaystyle  \nabla_\vx y ~\) & Gradient of \(y~\) with respect to  \(\vx~\) \\
+  \(\displaystyle  \int f(\vx) d\vx ~\) & Definite integral over the entire domain of  \(\vx~\) \\
+  \(\displaystyle  \int_\sS f(\vx) d\vx~\) & Definite integral with respect to  \(\vx~\) over the set  \(\sS~\) \\
+\end{tabular}
+\egroup\index{Derivative}\index{Integral}\index{Gradient}
+
+\section*{Probability and Information Theory}
+
+\bgroup\def\arraystretch{1.8}
+\begin{tabular}{>{\centering}p{1.2in}p{4in}}
+  \(\displaystyle \Omega~\) & A experiment or sample space\\
+  \(\displaystyle \omega~\) & An outcome (an example)\\
+  \(\displaystyle A~\) & An event\\
+  \(\displaystyle A \bot B~\) & The events  \(A~\) and  \(B~\) are independent\\
+  \(\displaystyle \rvX \bot \rvY~\) & The random variables  \(\rvX~\) and  \(\rvY~\) are independent\\
+  \(\displaystyle P(A \mid B)~\) & The probability of an event A given the event B happened\\
+  \(\displaystyle P(\rvX=\ra_i) \equiv P_{\rvX} \equiv p(\ra_i) \equiv p_i \equiv p~\) & A probability distribution over a random variable (discrete or continuous defined by the context) \\
+  \(\displaystyle \ra \sim p~\) & An example  \(\ra~\) drawn from distribution \(p~\) \\
+  \(\displaystyle  \E_{\vx\sim p} [ f(x) ] \equiv \E_p f(x) \equiv \langle f(x) \rangle_p ~\)& Expectation of \(f(x)~\) with respect to \(p(\rx)~\) \\
+  \(\displaystyle \sigma^2(f(x)) ~\) & Variance of \(f(x)~\) under \(p(\rx)~\) \\
+  \(\displaystyle \Cov(f(x),g(x)) ~\) & Covariance of \(f(x)~\) and \(g(x)~\) under \(p(\rx)~\) \\
+  \(\displaystyle H[\rvX] ~\) & Shannon entropy of the random variable  \(\rvX~\) \\
+  \(\displaystyle \KL ( p \Vert q ) ~\) & Kullback-Leibler divergence of distribution \(p~\) and \(q~\) \\
+  \(\displaystyle \mathcal{N} ( \vx ; \mu , \sigma^2)~\) & Gaussian distribution over  \(\vx~\) with mean  \(\mu~\) and variance  \(\sigma^2~\) \\
+\end{tabular}
+\egroup\index{Independence}\index{Conditional independence}\index{Variance}\index{Covariance}\index{Kullback-Leibler divergence}\index{Shannon entropy}
+
+\section*{Functions}
+\bgroup\def\arraystretch{1.8}
+\begin{tabular}{>{\centering}p{1.2in}p{4in}}
+  \(\displaystyle f: \sA \rightarrow \sB~\) & The function \(f~\) with domain  \(\sA~\) and range  \(\sB~\) \\
+  \(\displaystyle f \circ g ~\) & Composition of the functions \(f~\) and \(g~\), $f(g(\cdot))$ \\
+  \(\displaystyle f(\vx ; \vtheta) \equiv f_{\vtheta}(\vx)~\) & A function of  \(\vx~\) parametrized by  \(\vtheta~\) \\
+  \(\displaystyle \log_b x~\) & The logarithm base \(b\) of \(x~\) \\
+  \(\displaystyle \log x=\log_2 x ~\) & If no base is specified, the base 2 is assumed \\
+
+  \(\displaystyle \sigma(x)~\) & A non-linear activation function \\
+  \(\displaystyle x^{+}~\) & Positive part of \(x~\), i.e.,  \(\max(0,x)~\) \\
+  \(\displaystyle \truth_{[condition]} ~\) & is the \textbf{indicator function} and is 1 if the condition is true, 0 otherwise \\
+\end{tabular}
+\egroup\index{Composition}
+
+
+\section*{Datasets and Distributions}
+We use the word \textbf{example} for an outcome drawn from a distribution and the word \textbf{sample} for a set of such \emph{examples}. A dataset is a \emph{sample}.
+\bgroup\def\arraystretch{1.8}
+\begin{tabular}{>{\centering}p{1.2in}p{4in}}
+\(\displaystyle \pdata~\) & The data generating distribution\\
+\(\displaystyle \ptrain~\) & The empirical distribution defined by the training set\\
+\(\displaystyle \sX~\) & A set of training examples\\
+\(\displaystyle x_i~\) & The  \(i\)-th example (input) from a dataset\\
+\(\displaystyle \mW^{(i)}~\) & The matrix \(\mW \) of weights in the \(i\)-th layer of a network\\
+\(\displaystyle y_i~\) & The target associated with  \(\vx_i~\) for supervised learning\\
+\(\displaystyle \mX~\) & The \(m \times n \) matrix with input example  \(\vx_i~\) in row  \(\mX_{i,:}~\) \\
+\end{tabular}
+\egroup\index{Datasets}
+\clearpage

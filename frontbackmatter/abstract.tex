@@ -1,11 +1,55 @@
-\chapter*{Abstract}\addcontentsline{toc}{chapter}{Abstract}
+%*******************************************************
+% Abstract
+%*******************************************************
+%\renewcommand{\abstractname}{Abstract}
+\pdfbookmark[1]{Abstract}{Abstract}
+% \addcontentsline{toc}{chapter}{\tocEntry{Abstract}}
+\begingroup
+\let\clearpage\relax
+\let\cleardoublepage\relax
+\let\cleardoublepage\relax
 
-Block ciphers form, without doubt, the backbone of today's encrypted communication and are thus justifiably the workhorses of cryptography.
-While efficiency of modern designs improved ever since the development of the DES and AES, the case with the corresponding security arguments differs.
-The thesis at hand aims at two main points, both in the direction of improving security analysis of block ciphers.
+\chapter*{Abstract}
+In the last decade, we have witnessed a myriad of astonishing
+successes in Deep Learning.
+Despite those many successes, we may again be climbing a peak
+of inflated expectations.
+If in the past, the false solution was to throw computation
+power at problems, today we try throwing data.
+% The sentence above doesn't not make that much sense in English,
+% you don't throw power/data onto problems...
+% However, I couldn't think of nice alternative for this sentence yet.
+%
+Such behaviour has triggered a winner-takes-all
+% competition among a handful of large corporations for owning more data,
+rush for data among a handful of large corporations,
+%
+raising concerns about privacy and concentration of power.
+Yet, we know for a fact that learning from way fewer samples is possible:
+humans show a much better generalisation ability than our current
+state of the art artificial intelligence.
+To achieve such needed generalisation power, we must
+understand better how learning happens in deep neural networks.
+The practice of modern machine learning has outpaced its theoretical
+development, deep learning models present generalisation capabilities
+unpredicted by current machine learning theory.
+There is yet no established new general theory of learning which handles
+this problem.
+In 2015, Naftali Tishby and Noga Zaslavsky published a
+seminal theory of learning based on the information-theoretical concept
+of the bottleneck principle.
+This document aims to investigate the scattered efforts of using the
+information bottleneck principle to explain the generalisation capabilities
+of deep neural networks and consolidate them into a comprehensive digest
+of this new general deep learning theory.
+\vfill
 
-Part~I studies a new notion for the better understanding of a special type of cryptanalysis and proposes a new block cipher instance.
-This instance comes with a tight bound on any differential, to the best of our knowledge the first such block cipher.
+\begin{otherlanguage}{brazilian}
+\pdfbookmark[1]{Resumo}{Resumo}
+\chapter*{Resumo}
+Na última década, assistimos estupefatos uma miríade de sucessos em Aprendizado Profundo. Apesar de tamanho sucesso, talvez estejamos subindo um pico de expectativas infladas. No passado, incorremos no erro de tentar resolver problemas com maior poder computacional, hoje estamos fazendo o mesmo tentando usar cada vez mais dados. Tal comportamento desencadeou uma corrida por dados entre grandes corporações, suscitando preocupações sobre privacidade e concentração de poder. Entretanto, é fato que aprender com muito menos dados é possível: humanos demonstram uma habilidade de generalização muito superior ao estado-da-arte atual em Inteligência Artificial. Para atingir tal capacidade, precisamos entender melhor como o aprendizado ocorre em Aprendizado Profundo.  A prática tem se desenvolvido mais rapidamente que a teoria na área. Modelos apresentam poder de generalização que a atual teoria não explica. Em 2015, Naftali Tishby e Noga Zaslavsky publicaram uma teoria de aprendizado baseado no princípio do gargalo de informação (information bottleneck). Este documento visa investigar esforços esparços do uso do princípio do gargalo para explicar a capacidade de generalização de redes neurais profundas e consolidar tal conhecimento em um compêndio abrangente deste novo desenvolvimento teórico.
+\end{otherlanguage}
 
-Part~II turns to automated methods in design and analysis of block ciphers.
-Our main contribution here is an algorithm to propagate subspaces through encryption rounds, together with two applications: an algorithmic security argument against a new type of cryptanalysis and an idea towards the automation of key recovery attacks.
+\endgroup
+
+\vfill

@@ -7,39 +7,46 @@
 
 \LoadClass[%
     a4paper,
-    10pt,
+    11pt,
     twoside,
 ]{memoir}
 \renewcommand{\footnotesize}{\fontsize{8pt}{9pt}\selectfont}
-\renewcommand{\normalsize}{\fontsize{10pt}{14pt}\selectfont}
-\fontsize{10pt}{14pt}\selectfont
+\renewcommand{\normalsize}{\fontsize{11pt}{16pt}\selectfont}
+\fontsize{11pt}{16pt}\selectfont
 
 \RequirePackage{geometry}
 
 %%% Load Fonts %%%
-\RequirePackage{charter}
 
-\RequirePackage[charter]{mathdesign}
-% fix mathdesigns redefinition of hrulefill
-% see https://tex.stackexchange.com/a/135356/37762
-\def\hrulefill{\leavevmode\leaders \hrule height \rulethickness \hfill\kern\z@}
-% set mathcal font
-% see https://tex.stackexchange.com/a/496198/37762
-\SetMathAlphabet{\mathcal}{normal}{OMS}{zplm}{m}{n}
+\usepackage[mathlf, minionint,footnotefigures]{MinionPro}
+% \usepackage[notext, noamsmath, nosf]{kpfonts}
+% \SetMathAlphabet{\mathcal}{normal}{OMS}{zplm}{m}{n}
+% \RequirePackage[fontsize=8pt]{beramono}
 
-\RequirePackage{beramono}
+\def\verbatim@font{\small\ttfamily}
+\sffamily
 
 %%% Layout the Page %%%
 \setlrmarginsandblock{26mm}{211pt}{*}
 \setmarginnotes{9mm}{12pc}{1em}
-
-\setulmarginsandblock{6pc}{8pc}{*}
-
-\setheadfoot{1.25\baselineskip}{10mm}
+% \setulmarginsandblock{6pc}{8pc}{*}
+\setulmarginsandblock{8pc}{8.5pc}{*}
+% \setheadfoot{2.25\baselineskip}{10mm}
+\setheadfoot{10mm}{15mm}
 \setheaderspaces{*}{8mm}{*}
 
 \checkandfixthelayout
 
+\newenvironment{fullwidth}{%
+    \newgeometry{
+      inner=26mm,
+      outer=26mm,
+      textheight=200mm}
+    \aliaspagestyle{chapter}{fullwidthplain}
+    \pagestyle{fullwidth}
+}{%
+    \restoregeometry
+}
 %%% Header und Footer Styles
 \nouppercaseheads
 \makepagestyle{diss}
@@ -56,8 +63,8 @@
 }
 \makerunningwidth{diss}[480pt]{480pt}
 \makeheadposition{diss}{flushright}{flushleft}{flushright}{flushleft}
-\makeevenhead{diss}{\small\thepage\hspace{1em}\textsc{\MakeLowercase\leftmark}}{}{}
-\makeoddhead{diss}{}{}{\small\textsc{\MakeLowercase\rightmark}\hspace{1em}\thepage}
+\makeevenhead{diss}{\color{medium-gray}\normalsize\thepage\hspace{1em}\large\textsc{\MakeLowercase\leftmark}}{}{}
+\makeoddhead{diss}{}{}{\color{medium-gray}\large\textsc{\MakeLowercase\rightmark}\hspace{1em}\large\thepage}
 
 \makepagestyle{fullwidth}
 \makepsmarks{fullwidth}{%
@@ -73,35 +80,31 @@
 }
 \makerunningwidth{fullwidth}[450pt]{450pt}
 \makeheadposition{fullwidth}{flushright}{flushleft}{flushright}{flushleft}
-\makeevenhead{fullwidth}{\small\thepage\hspace{1em}\textsc{\MakeLowercase\leftmark}}{}{}
+\makeevenhead{fullwidth}{\normalsize\thepage\hspace{1em}\textsc{\MakeLowercase\leftmark}}{}{}
 \makeoddhead{fullwidth}{}{}{\small\textsc{\MakeLowercase\rightmark}\hspace{1em}\thepage}
 
 \makepagestyle{plain}
 \makerunningwidth{plain}[480pt]{480pt}
 \makeheadposition{plain}{flushright}{flushleft}{flushright}{flushleft}
-\makeevenfoot{plain}{\small\thepage}{}{}
-\makeoddfoot{plain}{}{}{\small\thepage}
+\makeevenfoot{plain}{\large\thepage}{}{}
+\makeoddfoot{plain}{}{}{\large\thepage}
 
 \makepagestyle{fullwidthplain}
 \makerunningwidth{fullwidthplain}[450pt]{450pt}
 \makeheadposition{fullwidthplain}{flushright}{flushleft}{flushright}{flushleft}
-\makeevenfoot{fullwidthplain}{\small\thepage}{}{}
-\makeoddfoot{fullwidthplain}{}{}{\small\thepage}
+\makeevenfoot{fullwidthplain}{largee\thepage}{}{}
+\makeoddfoot{fullwidthplain}{}{}{\large\thepage}
 
 \aliaspagestyle{part}{empty}
 \aliaspagestyle{chapter}{plain}
 
-\newenvironment{fullwidth}{%
-    \newgeometry{inner=26mm, outer=26mm, top=6pc, bottom=102pt}
-    \aliaspagestyle{chapter}{fullwidthplain}
-    \pagestyle{fullwidth}
-}{%
-    \restoregeometry
-}
+
 
 % implements a new environment for figures, tables, etc
 % that are able to spread the full width of the page,
 % while keeping the caption on the side margin
+\usepackage{subcaption}
+
 \newlength{\fullwidthlen}
 \setlength{\fullwidthlen}{\marginparwidth}
 \addtolength{\fullwidthlen}{\marginparsep}
@@ -132,8 +135,8 @@
 
 %%% Chapter Style %%%
 \setlength{\beforechapskip}{0pt}
-\renewcommand{\chapnumfont}{\fontsize{72pt}{96pt}\selectfont}
-\renewcommand{\chaptitlefont}{\huge\rmfamily\itshape\color{darkgray}}
+\renewcommand{\chapnumfont}{\color{medium-gray}\fontsize{96pt}{106pt}\selectfont}
+\renewcommand{\chaptitlefont}{\Huge\rmfamily\itshape\color{medium-gray}}
 \renewcommand*{\printchaptername}{\chapnumfont}
 \renewcommand*{\afterchaptertitle}{\par\nobreak\vspace*{-10pt}\hrulefill\vskip\afterchapskip}
 \setlength{\afterchapskip}{\baselineskip}
@@ -143,12 +146,15 @@
 \renewcommand*{\aftertoctitle}{\par\nobreak\vspace*{-10pt}\hrulefill\vskip\aftertocskip}
 
 %%% Section and Subsection Style %%%
-\setsecheadstyle{\small\scshape\MakeTextLowercase}
+\setsecheadstyle{\large\scshape\MakeTextLowercase}
 \setsubsecheadstyle{\itshape}
-\setsecnumformat{\llap{\scriptsize\upshape\csname #1secnumformat\endcsname}}
-\newcommand\sectionsecnumformat{\thesection\quad}
-\newcommand\subsectionsecnumformat{\thesubsection\quad}
-\setaftersecskip{\baselineskip}
+\setsecnumformat{\llap{\normalsize\upshape\csname #1secnumformat\endcsname}}
+\newcommand\sectionsecnumformat{\large\thesection\quad}
+\newcommand\subsectionsecnumformat{\large\thesubsection\quad}
+\setsecindent{0em}
+\setbeforesecskip{-1em}
+\setaftersecskip{1.5sp}
+
 
 %%% Paragraph Style %%%
 \setparaheadstyle{\scshape}
@@ -168,10 +174,10 @@
 \def\f@rtoc{%
 \texorpdfstring{\MakeTextUppercase{\tempf@rtoc}}{\tempf@rtoc}}%
 }
-\renewcommand{\cftpartformatpnum}[1]{\small #1}
-\renewcommand{\cftchapterformatpnum}[1]{\small #1}
-\renewcommand{\cftsectionformatpnum}[1]{\small #1}
-\renewcommand{\cftsubsectionformatpnum}[1]{\small #1}
+\renewcommand{\cftpartformatpnum}[1]{\normalsize #1}
+\renewcommand{\cftchapterformatpnum}[1]{\normalsize #1}
+\renewcommand{\cftsectionformatpnum}[1]{\normalsize #1}
+\renewcommand{\cftsubsectionformatpnum}[1]{\normalsize #1}
 \renewcommand{\cftchapterafterpnum}{\vspace{2pt}}
 \renewcommand{\cftsectionafterpnum}{\vspace{2pt}}
 \renewcommand{\cftsubsectionafterpnum}{\vspace{2pt}}
@@ -198,16 +204,19 @@
 % Aligning marginnotes
 % https://tex.stackexchange.com/questions/36554/vertically-aligning-a-marginnote-and-a-section-title
 \RequirePackage{marginnote}
+
+% \RequirePackage{sidenotes}
 \newcounter{sidenote}
-\providecommand\sidenote[1]{%                             a simple margin note
+\providecommand\sidenote[1]{%a simple margin note
     \refstepcounter{sidenote}%                            step counter
     \mbox{\textsuperscript{\thesidenote}}%                the number (superscript) in text
     \marginpar{\footnotesize\mbox{\textsuperscript{\thesidenote}}#1}% the note
+    % {\footnotesize\mbox{\textsuperscript{\thesidenote}}#1}% the note
 }
 \footnotesinmargin
-\setlength{\footmarkwidth}{0.8em}
+\setlength{\footmarkwidth}{0.3em}
 \setlength{\footmarksep}{-\footmarkwidth}
-\setlength{\footparindent}{1em}
+\setlength{\footparindent}{0em}
 \renewcommand{\foottextfont}{\footnotesize}
 
 \setsidecaps{\marginparsep}{\marginparwidth}
@@ -230,12 +239,10 @@
 \newfixedcaption[\subcaption]{\subfigcaption}{figure}
 
 \RequirePackage[font=footnotesize]{caption}
-
 \newcommand{\openepigraph}[2]{%
   \marginpar{%
-    \footnotesize%
-    \flushright%
-    %\justifying{%
+    \vspace{-8\baselineskip}
+    \large%
     \enquote{\textit{#1}}%
     %}%
 
@@ -251,7 +258,7 @@
     \makeatother
 }
 
-%\RequirePackage{amssymb}
+
 \newskip\newthoughtskipamount
 \newthoughtskipamount=1.0\baselineskip plus 0.5ex minus 0.2ex
 \providecommand\newthoughtbreak{\par\ifdim\lastskip<\newthoughtskipamount
@@ -401,7 +408,7 @@
 \RequirePackage[T1]{fontenc}
 \RequirePackage{microtype}
 
-\bibliography{abbrev3,crypto,references}
+\bibliography{bibliography}
 
 \RequirePackage{abbrv, delimiters}
 
@@ -413,22 +420,8 @@
 \algrenewcommand\algorithmicrequire{\textbf{Precondition:}}
 \algrenewcommand\algorithmicensure{\textbf{Postcondition:}}
 
-\RequirePackage[newfloat]{minted}
-\newminted{c}{mathescape, linenos=true, numberblanklines=false, fontsize=\footnotesize}
-\newminted{sage}{mathescape, linenos=true, numberblanklines=false, fontsize=\footnotesize}
-\newenvironment{clisting}{\captionsetup{type=listing}}{}
-\newenvironment{sagelisting}{\captionsetup{type=listing}}{}
-\SetupFloatingEnvironment{listing}{name=Code}
 
-%% make listings numbers non-copy-able
-%\RequirePackage{accsupp}
-%\newcommand{\noncopynumber}[1]{%
-%    \BeginAccSupp{method=escape,ActualText={}}
-%    #1
-%    \EndAccSupp{}
-%}
-
-\RequirePackage{xcolor}
+\RequirePackage[dvipsnames]{xcolor}
 \RequirePackage{booktabs}
 \RequirePackage{colortbl}
 \RequirePackage{multirow}
@@ -438,6 +431,7 @@
 \RequirePackage[section]{placeins}
 
 \definecolor{Burgundy}{RGB}{144, 0, 32}
+\definecolor{medium-gray}{HTML}{666666}
 
 %%% Math Stuff %%%
 \RequirePackage{amsmath, amsthm, mathtools}
@@ -470,6 +464,7 @@
 
 % newtheorems have to be declared after loading cleveref
 % https://tex.stackexchange.com/a/19106/37762
+
 \theoremstyle{definition}
 \newtheorem{definition}{Definition}
 \newtheorem{example}[definition]{Example}
@@ -514,3 +509,23 @@
 \crefname{figure}{Figure}{Figures}
 
 \newcommand{\crefName}[1]{\cref{#1} (\nameref{#1})}
+
+% FRED
+\newcommand{\sidefigure}[3]{
+  \marginpar{%
+    \centering
+    \vspace*{#2\baselineskip}
+    \includegraphics[width=.9\marginparwidth]{#1}
+    \captionof{figure}[#3]{#3}\label{fig:#1}
+  }
+}
+
+\newcommand{\blockfigure}[3]{
+  \begin{figure}
+    \begin{sidecaption}[#3]{#3}\label{fig:#1}
+      \centering
+      \includegraphics[width=#2\textwidth]{#1}
+    \end{sidecaption}
+  \end{figure}
+}
+

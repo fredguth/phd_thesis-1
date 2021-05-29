@@ -1,0 +1,74 @@
+\include{math_commands.tex}
+% https://tex.stackexchange.com/a/114770
+\robustify\setcounter
+\robustify\addtocounter
+\robustify\setlength
+\robustify\addtolength
+
+\definecolor{RoyalBlue}{cmyk}{1,0.5,0,0}
+\definecolor{Black}{cmyk}{0,0,0,0}
+\definecolor{alertred}{rgb}{0.80,0.12,0.12}
+\definecolor{linkgreen}{RGB}{0,166,0}
+
+
+\graphicspath{{./Images/}{./figures/}{./tikzpictures/}}
+
+\newrobustcmd*{\fullfullcite}{%
+    \AtNextCite{%
+        \AtEachCitekey{%
+            \defcounter{maxnames}{99}%
+            \DeclareNameAlias{labelname}{given-family}%
+        }%
+    }%
+    \fullcite
+}
+
+
+% \renewcommand{\cite}[1]{\sidecite{#1}}
+
+% to fix problem with toc
+% \AtBeginDocument{\addtocontents{toc}{%
+%   \protect\vspace{\dimexpr\cftbeforepartskip-\cftbeforechapskip\relax}%
+% }}
+
+% \setlength{\cftbeforechapskip}{10pt}
+% \renewcommand{\cftchapafterpnum}{\vspace{6pt}}
+% \newcommand{\bt}[1]{\textbf{#1}}
+
+
+% \renewcommand{\sectionmark}[1]{\markright{\textsc{\thesection}\enspace\spacedlowsmallcaps{#1}}}
+
+% \newlength\largefigure
+% % to create a new length
+% % \setlength{\largefigure}{\columnwidth+\marginparsep+\marginparwidth}
+% \setlength{\largefigure}{\textwidth+\marginparsep+\marginparwidth}
+
+% \def\changemargin#1#2{\list{}{\rightmargin#2\leftmargin#1}\item[]}
+% \let\endchangemargin=\endlist
+
+
+
+\DeclareMathOperator*{\SumInt}{%
+\mathchoice%
+  {\ooalign{$\displaystyle\sum$\cr\hidewidth$\displaystyle\bigintsss$\hidewidth\cr}}
+  {\ooalign{\raisebox{.14\height}{\scalebox{.7}{$\textstyle\sum$}}\cr\hidewidth$\textstyle\bigintsss$\hidewidth\cr}}
+  {\ooalign{\raisebox{.2\height}{\scalebox{.6}{$\scriptstyle\sum$}}\cr$\scriptstyle\bigintsss$\cr}}
+  {\ooalign{\raisebox{.2\height}{\scalebox{.6}{$\scriptstyle\sum$}}\cr$\scriptstyle\bigintsss$\cr}}
+}
+
+% Change margins for floating figures
+% \setlength{\wrapoverhang}{\marginparwidth}
+% \addtolength{\wrapoverhang}{\marginparsep}
+
+
+
+
+
+
+
+
+
+% % set the Bison QED symbol
+% \renewcommand{\qed}{%
+% \leavevmode\unskip\penalty9999 \hbox{}\nobreak\hfill%
+% \quad\hbox{\includegraphics[height=1em]{bison/bison-qed.jpg}}}

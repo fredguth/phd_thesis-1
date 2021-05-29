@@ -138,95 +138,7 @@ In particular, our distinguisher ends in, and our starting subspace is thus,
             The red state blocks mark active words in the distinguisher, the hatched blocks words on which we have conditions to check during the partial decryption.
     }[fig:key-rec:ex]
     \centering
-    \begin{tikzpicture}
-        \node (state00i) [draw,circle,thick,fill=white] {$c_0$};
-        \begin{scope}[on background layer]
-            \node (state00) [draw,rectangle,fit={(state00i)},thick,rounded corners,minimum width=1cm,minimum height=1cm,pattern=north west lines,pattern color=black] {};
-        \end{scope}
-        \node (state01) [right=5em of state00,draw,rectangle,thick,rounded corners,minimum width=1cm,minimum height=1cm,fill=alertred] {};
-        \node (state02) [right=5em of state01,draw,rectangle,thick,rounded corners,minimum width=1cm,minimum height=1cm] {};
-        \node (state03) [right=5em of state02,draw,rectangle,thick,rounded corners,minimum width=1cm,minimum height=1cm] {};
-
-        \node (input0) [above=1em of state00] {$x_1$};
-        \node (input1) [above=1em of state01] {$x_2$};
-        \node (input2) [above=1em of state02] {$x_3$};
-        \node (input3) [above=1em of state03] {$x_4$};
-
-        \node (state10i) [below=7em of state00,draw,circle,thick,fill=white] {$c_1$};
-        \begin{scope}[on background layer]
-            \node (state10) [draw,rectangle,fit={(state10i)},thick,rounded corners,minimum width=1cm,minimum height=1cm,pattern=north west lines,pattern color=black] {};
-        \end{scope}
-        \node (state11) [right=5em of state10,draw,rectangle,thick,rounded corners,minimum width=1cm,minimum height=1cm,fill=alertred] {};
-        \node (state12) [right=5em of state11,draw,rectangle,thick,rounded corners,minimum width=1cm,minimum height=1cm,fill=alertred] {};
-        \node (state13) [right=5em of state12,draw,rectangle,thick,rounded corners,minimum width=1cm,minimum height=1cm] {};
-
-        \draw[thick] (state00.south) -- +(0,-3em) -- ($(state11.north)+(0,1em)$) -- (state11.north);
-        \draw[thick] (state01.south) -- +(0,-3em) -- ($(state12.north)+(0,1em)$) -- (state12.north);
-        \draw[thick] (state02.south) -- +(0,-3em) -- ($(state13.north)+(0,1em)$) -- (state13.north);
-        \draw[thick] (state03.south) -- +(0,-3em) -- ($(state10.north)+(0,1em)$) -- (state10.north);
-
-        \node (XOR00) [below=1em of state00,XOR,scale=1.2] {};
-        \node (XOR02) [below=1em of state02,XOR,scale=1.2] {};
-
-        \node (S00) [right=1em of XOR00,draw,rectangle,thick,rounded corners,minimum width=0.75cm,minimum height=0.75cm] {$S$};
-        \node (S02) [right=1em of XOR02,draw,rectangle,thick,rounded corners,minimum width=0.75cm,minimum height=0.75cm] {$S$};
-
-        \node (XOR01) [right=1em of S00,XOR,scale=1.2] {};
-        \node (XOR03) [right=1em of S02,XOR,scale=1.2] {};
-
-        \node (k1) [above=1em of XOR01] {$k_{0,1}$};
-        \node (k0) [above=1em of XOR03] {$k_{0,2}$};
-
-        \draw[thick,-latex] (k1) edge (XOR01);
-        \draw[thick,-latex] (XOR01) edge (S00);
-        \draw[thick,-latex] (S00) edge (XOR00);
-        \draw[thick,-latex] (state01) |- (XOR01);
-
-        \draw[thick,-latex] (k0) edge (XOR03);
-        \draw[thick,-latex] (XOR03) edge (S02);
-        \draw[thick,-latex] (S02) edge (XOR02);
-        \draw[thick,-latex] (state03) |- (XOR03);
-
-
-        \node (state20i) [below=7em of state10,draw,circle,thick,fill=white] {$c_2$};
-        \begin{scope}[on background layer]
-            \node (state20) [draw,rectangle,fit={(state20i)},thick,rounded corners,minimum width=1cm,minimum height=1cm,pattern=north west lines,pattern color=black] {};
-        \end{scope}
-        \node (state21) [right=5em of state20,draw,rectangle,thick,rounded corners,minimum width=1cm,minimum height=1cm,fill=alertred] {};
-        \node (state22) [right=5em of state21,draw,rectangle,thick,rounded corners,minimum width=1cm,minimum height=1cm,fill=alertred] {};
-        \node (state23) [right=5em of state22,draw,rectangle,thick,rounded corners,minimum width=1cm,minimum height=1cm,fill=alertred] {};
-
-        \draw[thick] (state10.south) -- +(0,-3em) -- ($(state21.north)+(0,1em)$) -- (state21.north);
-        \draw[thick] (state11.south) -- +(0,-3em) -- ($(state22.north)+(0,1em)$) -- (state22.north);
-        \draw[thick] (state12.south) -- +(0,-3em) -- ($(state23.north)+(0,1em)$) -- (state23.north);
-        \draw[thick] (state13.south) -- +(0,-3em) -- ($(state20.north)+(0,1em)$) -- (state20.north);
-
-        \node (XOR10) [below=1em of state10,XOR,scale=1.2] {};
-        \node (XOR12) [below=1em of state12,XOR,scale=1.2] {};
-
-        \node (S10) [right=1em of XOR10,draw,rectangle,thick,rounded corners,minimum width=0.75cm,minimum height=0.75cm] {$S$};
-        \node (S12) [right=1em of XOR12,draw,rectangle,thick,rounded corners,minimum width=0.75cm,minimum height=0.75cm] {$S$};
-
-        \node (XOR11) [right=1em of S10,XOR,scale=1.2] {};
-        \node (XOR13) [right=1em of S12,XOR,scale=1.2] {};
-
-        \node (k3) [above=1em of XOR11] {$k_{1,1}$};
-        \node (k2) [above=1em of XOR13] {$k_{1,2}$};
-
-        \draw[thick,-latex] (k3) edge (XOR11);
-        \draw[thick,-latex] (XOR11) edge (S10);
-        \draw[thick,-latex] (S10) edge (XOR10);
-        \draw[thick,-latex] (state11) |- (XOR11);
-
-        \draw[thick,-latex] (k2) edge (XOR13);
-        \draw[thick,-latex] (XOR13) edge (S12);
-        \draw[thick,-latex] (S12) edge (XOR12);
-        \draw[thick,-latex] (state13) |- (XOR13);
-
-        \node (u0) [right=2em of state03] {$U_0$};
-        \node (u1) [right=2em of state13] {$U_1$};
-        \node (u2) [right=2em of state23] {$U_2$};
-    \end{tikzpicture}
+    \includegra....
     \end{sidecaption}
 \end{figure}
 % nb: this 4 branch Feistel structure looks like the one used in Clefia
@@ -657,7 +569,7 @@ Let us conclude with an example comparing linear and affine subspace propagation
                     \mathtt{4} & \mathtt{0} & 0 & 0 \\
                     \mathtt{2} & \mathtt{0} & 0 & 0 \\
                     \mathtt{1} & \mathtt{0} & 0 & 0 \\
-                \end{Bsmallmatrix},\ 
+                \end{Bsmallmatrix},\
                 \begin{psmallmatrix} 0 & \mathtt{8} & 0 & 0 \end{psmallmatrix}
                 \intertext{and}
                 C_1,\ a_1 &= \begin{Bsmallmatrix}
@@ -665,7 +577,7 @@ Let us conclude with an example comparing linear and affine subspace propagation
                     \mathtt{4} & \mathtt{0} & 0 & 0 \\
                     \mathtt{2} & \mathtt{0} & 0 & 0 \\
                     \mathtt{1} & \mathtt{0} & 0 & 0 \\
-                \end{Bsmallmatrix},\ 
+                \end{Bsmallmatrix},\
                 \begin{psmallmatrix} 0 & \mathtt{1} & \mathtt{8} & 0 \end{psmallmatrix}\;.
             \end{align*}
         \item[Step~4] For the sake of brevity, we only compute the independences for the first round here, \ie/ we concentrate on $F_{k_{0,1},k_{0,2}}$ and thus independences of $k_0 = (k_{0,1}, k_{0,2}) \in \F_2^{4+4}$.

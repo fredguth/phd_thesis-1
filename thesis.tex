@@ -1,0 +1,121 @@
+% !TeX root = ./thesis.tex
+% !TEX encoding = UTF-8 Unicode
+% !TEX program = latexmk
+% !TEX options = -synctex=1 -file-line-error -halt-on-error -xelatex -outdir="%OUTDIR%" "%DOC%"
+
+% ***********************************************************************
+% A Classic Thesis Style
+% Copyright (C) 2018 André Miede and Ivo Pletikosić
+% ***********************************************************************
+%********************************************************************
+% Note: Silence known warnings that won't be fixed soon
+%********************************************************************
+\RequirePackage{silence}
+
+% :-\
+\WarningFilter{scrreprt}{Usage of package `titlesec'}
+\WarningFilter{scrreprt}{Activating an ugly workaround}
+\WarningFilter{titlesec}{Non standard sectioning command detected}
+\WarningFilter{scrreprt}{Usage of package `tocloft'}
+
+\documentclass[ twoside, openright,titlepage,numbers=noenddot,headinclude,footinclude,cleardoublepage=empty,abstract=on, BCOR=5mm,paper=a4,fontsize=11pt, dvipsnames ]{scrreprt}
+
+\input{thesis-config}
+
+% make all your adjustments in here
+\addbibresource{bibliography.bib}
+
+% bibliography
+%\hyphenation{put special hyphenation here} %hyphenation
+% ********************************************************************
+% Formatting
+%*******************************************************
+% \includeonly{%
+% FrontBackmatter/Contents,
+% FrontBackmatter/Acronyms,
+% Chapters/Chapter01,
+% Chapters/Chapter02,
+% Chapters/Chapter03,
+% Chapters/Chapter04,
+% Chapters/Chapter05,
+% Chapters/Chapter06,
+% Chapters/Chapter07,
+% Chapters/Chapter08,
+% Chapters/Chapter09,
+% }
+\begin{document}
+\frenchspacing \raggedbottom \selectlanguage{english}
+
+% english brazilian
+%\renewcommand*{\bibname}{new name}
+%\setbibpreamble{}
+\pagenumbering{roman}
+\pagestyle{plain}
+
+%********************************************************************
+% Frontmatter
+%*******************************************************
+
+\include{FrontBackmatter/Titlepage}
+\include{FrontBackmatter/SignaturePage}
+% \include{FrontBackmatter/Titleback}
+% \cleardoublepage\include{FrontBackmatter/Dedication}
+%\cleardoublepage\include{FrontBackmatter/Foreword}
+
+
+% \cleardoublepage\include{FrontBackmatter/Abstract}
+
+% \cleardoublepage\include{FrontBackmatter/Publications}
+% \cleardoublepage\include{FrontBackmatter/Acknowledgments}
+\cleardoublepage\include{FrontBackmatter/Contents}
+\include{FrontBackmatter/Lists}
+
+%********************************************************************
+% Mainmatter
+%*******************************************************
+\pagestyle{scrheadings}
+\pagenumbering{arabic}
+
+\include{Chapters/intro}
+\cleardoublepage \part{Background}\label{pt:background}
+\include{Chapters/ai}
+\include{Chapters/prob}
+\include{Chapters/mlt}
+\include{Chapters/info}
+
+\cleardoublepage \part{Intermezzo}\label{pt:intermezzo}
+\include{Chapters/it-lt}
+\include{Chapters/reals}
+\include{Chapters/emerging}
+% \ctparttext{Where you can put some informational part preamble text here.}
+
+\cleardoublepage \part{The emergence of a theory}\label{pt:emergence_of_theory}
+\include{Chapters/ib-method}
+\include{Chapters/ib-rl}
+\include{Chapters/ib-dl}
+\include{Chapters/ib-lt}
+% ********************************************************************
+% Backmatter
+%*******************************************************
+\appendix
+
+\renewcommand{\thechapter}{\Alph{chapter}}
+\cleardoublepage
+\part{Appendix}
+% \cleardoublepage\include{Chapters/Chapter0A}
+% \cleardoublepage\include{Chapters/Chapter0B}
+
+%********************************************************************
+% Other Stuff in the Back
+%*******************************************************
+\cleardoublepage
+\include{FrontBackmatter/Bibliography}
+
+% \cleardoublepage\include{FrontBackmatter/Declaration}
+% \cleardoublepage\include{FrontBackmatter/Colophon}
+% ********************************************************************
+% Game Over
+%*******************************************************
+\end{document}
+
+% ********************************************************************
