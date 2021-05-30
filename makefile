@@ -5,7 +5,7 @@ pdf: main.pdf
 again: clean pdf
 
 main.pdf: main.tex
-	latexmk -pdf -pdflatex="pdflatex -file-line-error -interaction=nonstopmode" main.tex 2>&1 | grep "^.*:[0-9]*: .*$ "
+	latexmk -pdf -pdflatex="pdflatex -file-line-error -interaction=batchmode" main.tex 2>&1 | grep "^.*:[0-9]*: .*$ "
 
 diss.pdf: diss.tex
 	latexmk -pdf -shell-escape -file-line-error -f diss.tex
