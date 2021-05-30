@@ -1,22 +1,9 @@
 %*******************************************************
 % Notation
 %*******************************************************
-%  \phantomsection
-
-\pdfbookmark[1]{Notation}{notation}
-\markboth{\spacedlowsmallcaps{Notation}}{\spacedlowsmallcaps{Notation}}
 \chapter*{Notation}\label{notation}
 
-% Sometimes we have to include the following line to get this section
-% included in the Table of Contents despite being a chapter*
-\addcontentsline{toc}{chapter}{Notation}
 This section provides a concise reference describing notation used throughout this document.
-
-% Need to use minipage to keep title of table on same page as table
-% \begin{minipage}{\textwidth}
-% This is a hack to put a little title over the table
-% We cannot use "\section*", etc., they appear in the table of contents.
-% tocdepth does not work on this chapter.
 
 \section*{Numbers and Arrays}
 \bgroup\def\arraystretch{1.8}
@@ -29,6 +16,17 @@ This section provides a concise reference describing notation used throughout th
 \end{tabular}
 
 \egroup\index{Scalar}\index{Vector}\index{Matrix}
+
+\section*{Indexing}
+\bgroup\def\arraystretch{1.8}
+\begin{tabular}{>{\centering}p{1.2in}p{4in}}
+  \(\displaystyle a_i~\) & Element  \(i\) of vector  \(\va~\), with indexing starting at 1 \\
+  \(\displaystyle \mA_{i,j}~\) & Element  \(i j~\) of matrix  \(\mA~\) \\
+  \(\displaystyle \mA_{i, :}~\) & Row  \(i\) of matrix  \(\mA~\) \\
+  \(\displaystyle \mA_{:, i}~\) & Column  \(i\) of matrix  \(\mA~\) \\
+\end{tabular}
+\egroup\index{Indexing}
+
 
 \section*{Sets}
 \bgroup\def\arraystretch{1.8}
@@ -51,15 +49,6 @@ This section provides a concise reference describing notation used throughout th
 
 \egroup\index{Set}
 
-\section*{Indexing}
-\bgroup\def\arraystretch{1.8}
-\begin{tabular}{>{\centering}p{1.2in}p{4in}}
-  \(\displaystyle a_i~\) & Element  \(i\) of vector  \(\va~\), with indexing starting at 1 \\
-  \(\displaystyle \mA_{i,j}~\) & Element  \(i j~\) of matrix  \(\mA~\) \\
-  \(\displaystyle \mA_{i, :}~\) & Row  \(i\) of matrix  \(\mA~\) \\
-  \(\displaystyle \mA_{:, i}~\) & Column  \(i\) of matrix  \(\mA~\) \\
-\end{tabular}
-\egroup\index{Indexing}
 
 \section*{Linear Algebra Operations}
 \bgroup\def\arraystretch{1.8}
@@ -132,4 +121,18 @@ We use the word \textbf{example} for an outcome drawn from a distribution and th
 \(\displaystyle \mX~\) & The \(m \times n \) matrix with input example  \(\vx_i~\) in row  \(\mX_{i,:}~\) \\
 \end{tabular}
 \egroup\index{Datasets}
+
+\section*{Information Theory}
+\bgroup\def\arraystretch{1.8}
+\begin{tabular}{>{\centering}p{1.2in}p{4in}}
+\(\displaystyle H[\rvX]~\) & The entropy of a random process~(bits)\\
+\(\displaystyle H[\rvX|\rvY]~\) & The conditional entropy of a random process $\rvX$ given $\rvY$. Measures the amount of uncertainty left in $\rvX$ by knowing $\rvY$~(bits)\\
+\(\displaystyle R[\rvX]~\) & The rate of a transmission of $\rvX$ (bits)\\
+\(\displaystyle H_{p,q}[X]\) & The cross-entropy of $\rvX$ between its true distribution $p$ and a modeled distribution $q$ (bits)\\
+\(\displaystyle C[\rvX;\rvY]~\) & The capacity of a channel between $\rvX$ and $\rvY$ (bits)\\
+\(\displaystyle I[\rvX;\rvY]~\) & The mutual information between  $\rvX$ and $\rvY$ (bits)\\
+
+\(\displaystyle \sT_\delta(\rvX) \equiv \sT_\epsilon(\rvX)~\) & The  typical set of $\rvX$\\
+\end{tabular}
+\egroup\index{Information Measures}
 \clearpage

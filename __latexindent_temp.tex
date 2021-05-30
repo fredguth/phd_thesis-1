@@ -23,22 +23,16 @@
 \clearpage\input{frontbackmatter/abstract}
 \clearpage\input{frontbackmatter/resumoextendido}
 
-\cleardoublepage\tableofcontents*\addcontentsline{toc}{chapter}{Contents}
+\clearpage\tableofcontents*\addcontentsline{toc}{chapter}{Contents}
 
-\clearpage\include{frontbackmatter/Acronyms.tex}
-\clearpage\include{frontbackmatter/Notation.tex}
+\clearpage\include{frontbackmatter/Acronyms.tex}\addcontentsline{toc}{chapter}{Acronyms}
+\clearpage\include{frontbackmatter/Notation.tex}\addcontentsline{toc}{chapter}{Notation}
 \mainmatter{}
-% \begin{fullwidth}
-% \part{Prologue}
-% \end{fullwidth}
-
-
-% \cleardoublepage{}
-% \include{Chapters/intro}
-
-% \begin{fullwidth}
-% \cleardoublepage \part{Background}\label{pt:background}
-% \end{fullwidth}
+\cleardoublepage{}
+\include{Chapters/intro}
+\begin{fullwidth}
+\cleardoublepage \part{Background}\label{pt:background}
+\end{fullwidth}
 % \include{Chapters/ai}
 % \include{Chapters/prob}
 % \include{Chapters/mlt}
