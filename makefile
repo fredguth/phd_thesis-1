@@ -14,6 +14,10 @@ fast: main.tex
 	pdflatex main.tex
 	open main.pdf
 
+slow: clean-purge main.tex
+	latexmk -pdf -pdflatex="pdflatex -file-line-error -interaction=batchmode" -halt-on-error main.tex 2>&1 | grep "^.*:[0-9]*: .*$ "
+	open main.pdf
+
 clean:
 	latexmk -c
 	$(RM) -f *.auxlock

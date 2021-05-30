@@ -1,116 +1,28 @@
-% front matter / titelei
-% recto: halftitlepage / schmutztitelseite, vortitel
-\definecolor{medium-gray}{HTML}{666666}
-\definecolor{Burgundy}{RGB}{144, 0, 32}
-\thispagestyle{empty}
-{
-    \begin{fullwidth}
-        \centering
-        \hphantom{.}
-        \vfill
-        {
-            \Large}The emergence of an\\
-            \HUGE\color{Maroon}Information Bottleneck Theory\\
-            of \color{Maroon}Deep Learning}
-        \vfill
-        \vfill
-    \end{fullwidth}
-}
+%*******************************************************
+% Abstract
+\chapter*{Abstract}\label{ch:abstract}
+%*******************************************************
 
-\clearpage{}
-
-% verso: frontispiece / frontiszipzseite, vakatseite
-% dedication
-\cleardoublepage{}
-
-% recto: titlepage / titelblatt, innentitel
-\thispagestyle{empty}
-{
-    \calccentering{\unitlength}
-    \begin{adjustwidth*}{\unitlength}{-\unitlength}
-        \raggedleft{}
-        {\Huge\color{Burgundy}%
-        The emergence of an\\
-        Information Bottleneck Theory\\
-        of Deep Learning}\\[\baselineskip]
-        {\LARGE%
-        Dissertation}\\[0.2\textheight]
-        {\huge%
-        Frederico Guth}\\[\baselineskip]
-        {\LARGE%
-        16th~August 2019}
-        \vfill
-        \vfill
-        {\large%
-        Document presented for examination of\\
-        the Master Degree in Computer Science\\[\baselineskip]% (Dr.\ rer.\ nat.)\\[\baselineskip]
-
-        to the\\[\baselineskip]
-
-        Institute of Exact Sciences\\
-        Department of Computer Science\\
-        at University of Brasília\\[2\baselineskip]
-
-
-        \begin{minipage}{0.5\textwidth}
-        \begin{tabular}{lr}
-            1st\hspace{4pt} Reviewer & Prof.\ Dr. Gregor Leander\\
-            2nd Reviewer & Prof.\ Dr.\; Alexander May
-        \end{tabular}
-        \end{minipage}
-        \hspace*{36pt}
-        %}\hspace*{-8pt}
-
-        %\vspace{2\baselineskip}
-        %Datum der Disputation: 13.\ Dezember 2019
-        \vfill
-        }
-        % {\includegraphics[height=1em]{bison/bison-qed.jpg}} %wortmark
-        \vspace*{\baselineskip}
-    \end{adjustwidth*}
-}
-
-\clearpage{}
-
-% verso: colophon / impressum
-\thispagestyle{empty}
-\hphantom{.}
-\vfill
-
-\section*{Imprint}
-
-\textit{\title}\\
-Copyright \textcopyright{} \the\year{} by \theauthor{}.\\
-All rights reserved. Printed in Brazil.\\
-Published by the University of Brasília, Brasília, Brazil.
-
-\section*{Colophon}
-
-This thesis was typeset using \LaTeX{} and the \texttt{memoir} documentclass.
-It is based on Aaron Turon's thesis \emph{Understanding and expressing scalable concurrency}\footnote{\url{https://people.mpi-sws.org/~turon/turon-thesis.pdf}}, itself a mixture of \texttt{classicthesis}\footnote{\url{https://bitbucket.org/amiede/classicthesis/}} by Andr\'e Miede and \texttt{tufte-latex}\footnote{\url{https://github.com/Tufte-LaTeX/tufte-latex}}, based on Edward Tufte's \emph{Beautiful Evidence}.\\[0.5\baselineskip]
-%
-The bibliography was processed by Biblatex.
-All graphics and plots are made with PGF/Ti\emph{k}Z.\\[0.5\baselineskip]
-%
-The body text is set 10/14pt (long primer) on a 26pc measure.
-The margin text is set 8/9pt (brevier) on a 12pc measure.
-Matthew Carter's \textrm{Charter} acts as both the text and display typeface.
-Monospaced text uses Jim Lyles's \texttt{Bitstream Vera Mono} (\enquote{Bera Mono}).
-
-\clearpage{}
-
-% % recto: dedication or epigraph
-% \thispagestyle{empty}
-% \vphantom{.}
-% \vfill
-% {%
-%     \flushright{}
-%     \emph{If we knew what it was we were doing,\\
-%           it would not be called research, would it?}\\
-%     \hfill---Albert Einstein
-% }
-% \vfill
-% \vfill
-
-% verso: blank
-\clearpage{}
+In the last decade, we have witnessed a myriad of astonishing
+successes in Deep Learning.
+Despite those many successes, we may again be climbing a peak
+of inflated expectations.
+If in the past, the false solution was to ``throw computation
+power at problems'', today we try ``throwing data''.
+Such behaviour has triggered a winner-takes-all
+rush for data among a handful of large corporations,
+raising concerns about privacy and concentration of power.
+We know for a fact, however, that learning from way fewer samples is possible: humans show a much better generalisation ability than our current state of the art artificial intelligence.
+To achieve such needed generalisation power, we must
+better understand how learning happens in deep neural networks.
+The practice of modern machine learning has outpaced its theoretical development, deep learning models present generalisation capabilities
+unpredicted by current machine learning theory.
+There is yet no established new general theory of learning which handles
+this problem.
+In 2015, Naftali Tishby and Noga Zaslavsky published a
+seminal theory of learning based on the information-theoretical concept
+of the bottleneck principle.
+This dissertation aims to investigate the scattered efforts of using the
+information bottleneck principle to explain the generalisation capabilities
+of deep neural networks and consolidate them into a comprehensive digest
+of this new general deep learning theory.

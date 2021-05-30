@@ -19,16 +19,16 @@
 % \setcounter{totalnumber}{5}
 \frenchspacing \raggedbottom \selectlanguage{english}
 \frontmatter{}
-% \input{frontbackmatter/titlepage}
+\input{frontbackmatter/titlepage}
 % \blankpage{}
 % \input{frontbackmatter/abstract}
 % \blankpage{}
 % \input{frontbackmatter/resumoextendido}
 % \blankpage{}
 
-\tableofcontents*\addcontentsline{toc}{chapter}{Contents}
-\clearpage{}
-\include{frontbackmatter/Acronyms.tex}
+\cleardoublepage\tableofcontents*\addcontentsline{toc}{chapter}{Contents}
+
+% \include{frontbackmatter/Acronyms.tex}
 
 % \listoffigures*\addcontentsline{toc}{chapter}{List of Figures}
 % \vspace{\baselineskip}
@@ -72,9 +72,9 @@
 % \cleardoublepage \part{The emergence of a theory}\label{pt:emergence_of_theory}
 % \end{fullwidth}
 % \include{Chapters/ib-method}
-\include{Chapters/ib-rl}
-\include{Chapters/ib-dl}
-\include{Chapters/ib-lt}
+% \include{Chapters/ib-rl}
+% \include{Chapters/ib-dl}
+% \include{Chapters/ib-lt}
 
 
 
@@ -101,19 +101,19 @@
 \printbibliography{}
 \end{fullwidth}
 
-\cleardoublepage{}
+% \cleardoublepage{}
 
-\chapter*{Versicherung an Eides Statt}\addcontentsline{toc}{chapter}{Versicherung an Eides Statt}
+% \chapter*{Versicherung an Eides Statt}\addcontentsline{toc}{chapter}{Versicherung an Eides Statt}
 
-Ich versichere an Eides statt, dass ich die eingereichte Dissertation selbstständig und ohne unzulässige fremde Hilfe verfasst, andere als die in ihr angegebene Literatur nicht benutzt und dass ich alle ganz oder annähernd übernommenen Textstellen sowie verwendete Grafiken, Tabellen und Auswertungsprogramme kenntlich gemacht habe.
+% Ich versichere an Eides statt, dass ich die eingereichte Dissertation selbstständig und ohne unzulässige fremde Hilfe verfasst, andere als die in ihr angegebene Literatur nicht benutzt und dass ich alle ganz oder annähernd übernommenen Textstellen sowie verwendete Grafiken, Tabellen und Auswertungsprogramme kenntlich gemacht habe.
 
-Außerdem versichere ich, dass die vorgelegte elektronische mit der schriftlichen Version der Dissertation übereinstimmt und die Abhandlung in dieser oder ähnlicher Form noch nicht anderweitig als Promotionsleistung vorgelegt und bewertet wurde.
+% Außerdem versichere ich, dass die vorgelegte elektronische mit der schriftlichen Version der Dissertation übereinstimmt und die Abhandlung in dieser oder ähnlicher Form noch nicht anderweitig als Promotionsleistung vorgelegt und bewertet wurde.
 
-\vspace{1cm}
-\noindent
-\rule{45mm}{0.1pt} \hfill{} \rule{45mm}{0.1pt}\\
-Datum \hfill{} Unterschrift
+% \vspace{1cm}
+% \noindent
+% \rule{45mm}{0.1pt} \hfill{} \rule{45mm}{0.1pt}\\
+% Datum \hfill{} Unterschrift
 
-\cleardoublepage{}
+% \cleardoublepage{}
 
 \end{document}
