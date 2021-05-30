@@ -26,6 +26,10 @@ clean:
 	$(RM) -f *.unq
 	$(RM) -f *.run.xml
 	$(RM) *.pdf
+	$(RM) __latex*.*
+	$(RM) Chapters/__latex*.*
+	$(RM) frontbackmatter/__latex*.*
+
 
 clean-all: clean
 	$(RM) -f *.bbl

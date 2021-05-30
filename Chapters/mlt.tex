@@ -1,5 +1,4 @@
 
-
 %************************************************
 \chapter{Machine Learning Theory}\label{ch:mlt}
 
@@ -162,7 +161,7 @@ Let \(d\) be a number such that representing any vector \(\rx \in \XX\) costs at
 \section{PAC Bounds}
 As we stated before, one of the main goals of \ac{MLT} is to guarantee bounds to the error and the number of samples needed (sample complexity) in learning problems. Here we present some of these guarantees as examples of how this theoretical development allows us to make claims on unknown distributions and unseen examples.
 \subsection{Guarantees for finite hypothesis spaces --- consistent case}
-\begin{theorem}[\cite{haussler:1988}]\label{th:haussler} Let \(\HH\) be a finite hypothesis space, \(\AA\) a learning algorithm that returns a consistent hypothesis \(h\), i.e.\ \(\hat{R}_{S}(h)=0\), for any hypothesis \(h\) and unknown distribution \(\DD=\PXY\).\\
+\begin{theorem}[\citeonly{haussler:1988}]\label{th:haussler} Let \(\HH\) be a finite hypothesis space, \(\AA\) a learning algorithm that returns a consistent hypothesis \(h\), i.e.\ \(\hat{R}_{S}(h)=0\), for any hypothesis \(h\) and unknown distribution \(\DD=\PXY\).\\
 	Let \(|S|=n\), then, \(\forall n \geq 1\):
 	\begin{align}
 		P[\exists h \in \HH: R_{\DD}(h)>\epsilon]\leq |\HH| e^{-\epsilon n}
@@ -360,7 +359,7 @@ A combinatorial result relates the growth behaviour of the shattering coefficien
 For a long time, \ac{MLT} was divided between Bayesian inference and PAC learning. In 1997, \citeauthor{shawe-taylor:1997} first presented a theorem of PAC guarantees for Bayesian algorithms (algorithms that minimise the risk using a prior probability for the data and hypothesis)\cite{shawe-taylor:1997}. This bridge allowed tighter PAC bounds for learning algorithms that take advantage of informative priors. Here we give PAC Bayes bounds for finite hypothesis spaces (for more, see \cite{mcallester:1999} and \cite{macallester:2013}).
 \subsection{PAC Bayes Bound Guarantees for finite hypothesis spaces --- consistent case}
 
-\begin{theorem}[Pre. Th. 1 \cite{mcallester:1999}] Let \(\HH\) be a finite hypothesis space, \(\AA\) a learning algorithm that returns a consistent hypothesis \(h\), i.e.\ \(\hat{R}_{S}(h)=0\), for any hypothesis $h$ and unknown distribution \(\DD=\PXY\), any \(|S|=n: n \geq 1\). For any probability distribution $P$ assigning nonzero probability to every hypothesis in a finite hypothesis space \(\HH\), with confidence $1-\delta$ over the selection of the sample of $n$ instances the following holds true:\\
+\begin{theorem}[Pre. Th. 1 \citeonly{mcallester:1999}] Let \(\HH\) be a finite hypothesis space, \(\AA\) a learning algorithm that returns a consistent hypothesis \(h\), i.e.\ \(\hat{R}_{S}(h)=0\), for any hypothesis $h$ and unknown distribution \(\DD=\PXY\), any \(|S|=n: n \geq 1\). For any probability distribution $P$ assigning nonzero probability to every hypothesis in a finite hypothesis space \(\HH\), with confidence $1-\delta$ over the selection of the sample of $n$ instances the following holds true:\\
 	\begin{align}
 		P[h \in H: (\hat{R}_{S}(h)=0) \land (R_{\DD}(h)>\epsilon)]\leq \frac{\ln \frac{1}{P(h)}+ \ln \frac{1}{\delta}}{n}
 	\end{align}
@@ -380,7 +379,7 @@ For a long time, \ac{MLT} was divided between Bayesian inference and PAC learnin
 	\end{align}
 \end{proof}
 \subsection{Guarantees for finite hypothesis spaces --- inconsistent case}
-\begin{theorem}[Pre. Th. 2 \cite{mcallester:1999}] Let \(\HH\) be a finite hypothesis space, \(\AA\) a learning algorithm that returns a consistent hypothesis \(h\), i.e.\ \(\hat{R}_{S}(h)=0\), for any hypothesis $h$, unknown distribution \(\DD=\PXY\),  sample \(|S|=n: n \geq 1\), and probability distribution $P$ assigning nonzero probability $\forall h \in \HH$, with confidence $(1-\delta)$the following holds true:\\
+\begin{theorem}[Pre. Th. 2 \citeonly{mcallester:1999}] Let \(\HH\) be a finite hypothesis space, \(\AA\) a learning algorithm that returns a consistent hypothesis \(h\), i.e.\ \(\hat{R}_{S}(h)=0\), for any hypothesis $h$, unknown distribution \(\DD=\PXY\),  sample \(|S|=n: n \geq 1\), and probability distribution $P$ assigning nonzero probability $\forall h \in \HH$, with confidence $(1-\delta)$the following holds true:\\
 	\begin{align}
 		\forall h \in \HH,~R(h)\leq\hat{R}_{S}(h) + \sqrt{\frac{\ln{\frac{1}{P(h)}}+ \ln{\frac{2}{\delta}}}{2n}}
 	\end{align}
